@@ -6,13 +6,13 @@ public class Enemy {
     private int damage;
 
     public Enemy(Enemies name) {
-        if(name == Enemies.GOBLIN || name == Enemies.HUMAN || name == Enemies.ORK) {
+        if (name == Enemies.GOBLIN || name == Enemies.HUMAN || name == Enemies.ORK) {
             this.health = 50;
             this.damage = 8;
-        } else if(name == Enemies.SKELETON || name == Enemies.ELF || name == Enemies.UNDEAD) {
+        } else if (name == Enemies.SKELETON || name == Enemies.ELF || name == Enemies.UNDEAD) {
             this.health = 60;
             this.damage = 5;
-        } else if(name == Enemies.DRAGON || name == Enemies.DWARF) {
+        } else if (name == Enemies.DRAGON || name == Enemies.DWARF) {
             this.health = 40;
             this.damage = 10;
         }
@@ -46,7 +46,7 @@ public class Enemy {
         target.setDamage(target.getDamage() - attack);
     }
 
-    public void health(int health) {
+    public void heal(int health) {
         this.health += health;
     }
 

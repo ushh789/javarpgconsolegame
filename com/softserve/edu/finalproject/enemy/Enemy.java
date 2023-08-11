@@ -1,5 +1,7 @@
 package com.softserve.edu.finalproject.enemy;
 
+import com.softserve.edu.finalproject.character.GameCharacter;
+
 public class Enemy {
     private Enemies name;
     private int health;

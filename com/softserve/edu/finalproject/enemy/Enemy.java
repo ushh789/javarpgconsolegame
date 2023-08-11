@@ -1,24 +1,15 @@
 package com.softserve.edu.finalproject.enemy;
 
 public class Enemy {
-    private Enemies name;
+    private String name;
     private int health;
     private int damage;
 
-    public Enemy(Enemies name) {
-        if (name == Enemies.GOBLIN || name == Enemies.HUMAN || name == Enemies.ORK) {
-            this.health = 50;
-            this.damage = 8;
-        } else if (name == Enemies.SKELETON || name == Enemies.ELF || name == Enemies.UNDEAD) {
-            this.health = 60;
-            this.damage = 5;
-        } else if (name == Enemies.DRAGON || name == Enemies.DWARF) {
-            this.health = 40;
-            this.damage = 10;
-        }
+    public Enemy(String name) {
+        this.name = name;
     }
 
-    public void setName(Enemies name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -31,7 +22,7 @@ public class Enemy {
     }
 
     public String getName() {
-        return name.getName();
+        return name;
     }
 
     public int getHealth() {

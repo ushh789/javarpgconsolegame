@@ -1,6 +1,6 @@
 package com.softserve.edu.finalproject.character;
 
-public class Rogue extends GameCharacter implements Ability{
+public class Rogue extends GameCharacter implements Ability {
     public Characters characterType = Characters.ROGUE;
 
     public Rogue(String name, Characters characterType) {

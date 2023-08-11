@@ -52,5 +52,6 @@ public abstract class GameCharacter {
     }
 
     public abstract void attack(Enemy target);
+
     public abstract void heal(int healing);
 }

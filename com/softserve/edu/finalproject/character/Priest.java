@@ -1,6 +1,6 @@
 package com.softserve.edu.finalproject.character;
 
-public class Priest extends GameCharacter implements Ability{
+public class Priest extends GameCharacter implements Ability {
     public Characters characterType = Characters.PRIEST;
 
     public Priest(String name, Characters characterType) {

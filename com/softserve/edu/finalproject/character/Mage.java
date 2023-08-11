@@ -1,6 +1,6 @@
 package com.softserve.edu.finalproject.character;
 
-public class Mage extends GameCharacter implements Ability{
+public class Mage extends GameCharacter implements Ability {
     public Characters characterType = Characters.MAGE;
 
     public Mage(String name, Characters characterType) {

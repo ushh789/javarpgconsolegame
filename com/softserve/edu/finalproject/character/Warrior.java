@@ -1,6 +1,6 @@
 package com.softserve.edu.finalproject.character;
 
-public class Warrior extends GameCharacter implements Ability{
+public class Warrior extends GameCharacter implements Ability {
     public Characters characterType = Characters.WARRIOR;
 
     public Warrior(String name, Characters characterType) {

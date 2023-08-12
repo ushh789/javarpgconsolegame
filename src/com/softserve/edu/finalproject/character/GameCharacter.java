@@ -1,5 +1,7 @@
 package com.softserve.edu.finalproject.character;
 
+import com.softserve.edu.finalproject.enemy.Enemy;
+
 public abstract class GameCharacter {
     private String name;
     private int level;

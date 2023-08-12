@@ -1,5 +1,7 @@
 package com.softserve.edu.finalproject.character;
 
+import com.softserve.edu.finalproject.enemy.Enemy;
+
 public class Warrior extends GameCharacter implements Ability {
     public Characters characterType = Characters.WARRIOR;
 

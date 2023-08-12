@@ -1,5 +1,7 @@
 package com.softserve.edu.finalproject.character;
 
+import com.softserve.edu.finalproject.enemy.Enemy;
+
 public class Rogue extends GameCharacter implements Ability {
     public Characters characterType = Characters.ROGUE;
 
@@ -19,7 +21,6 @@ public class Rogue extends GameCharacter implements Ability {
 
     }
 
-    @Override
     public void useAbility(Enemy target) {
 
     }

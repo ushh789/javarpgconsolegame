@@ -1,13 +1,7 @@
 package com.softserve.edu.finalproject.services;
 
-import com.softserve.edu.finalproject.character.Characters;
-import com.softserve.edu.finalproject.character.Mage;
-import com.softserve.edu.finalproject.character.Priest;
-import com.softserve.edu.finalproject.character.Rogue;
-import com.softserve.edu.finalproject.character.Warrior;
-import com.softserve.edu.finalproject.constants.GameConstants;
-import com.softserve.edu.finalproject.constants.GameWindows;
-import com.softserve.edu.finalproject.constants.Windows;
+import com.softserve.edu.finalproject.character.*;
+import com.softserve.edu.finalproject.constants.*;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -74,7 +68,7 @@ public class KeyEventsHandler implements Runnable {
         } else if (currentWindow == Windows.CREATED) {
             switch (key) {
                 case "1" -> {
-                    //continue
+                    GameEvents.generate();
                 }
                 case "2" -> GameEvents.quit();
             }

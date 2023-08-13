@@ -7,6 +7,7 @@ public class Enemy {
     private int health;
     private int damage;
 
+
     public Enemy(String name) {
         this.name = name;
     }
@@ -45,10 +46,6 @@ public class Enemy {
 
     @Override
     public String toString() {
-        return "Enemy { " +
-                "name = " + name +
-                ", health = " + health +
-                ", damage = " + damage +
-                " }";
+        return "You are fighting against: ";
     }
 }

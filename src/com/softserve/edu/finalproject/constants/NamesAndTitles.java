@@ -131,7 +131,7 @@ public class NamesAndTitles {
             "Fjola"
     };
 
-    public static final String[] orcNames = {
+    public static final String[] orkNames = {
             "Gorgrak",
             "Drogash",
             "Urzog",

@@ -17,4 +17,11 @@ public class Dwarf extends Enemy {
     public void setEnemyType(Enemies enemyType) {
         this.enemyType = enemyType;
     }
+    @Override
+    public String toString() {
+        return super.toString()+ "\n" +
+                enemyType + " - " + this.getName() +
+                "\n[HEALTH] " + this.getHealth() +
+                "\n[DAMAGE] " + this.getDamage();
+    }
 }

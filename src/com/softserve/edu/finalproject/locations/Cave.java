@@ -5,7 +5,7 @@ import static com.softserve.edu.finalproject.constants.NamesAndTitles.caveNames;
 
 
 public class Cave extends Area{
-    Cave(){
+    public Cave(){
         Random random = new Random();
         int chosenName = random.nextInt(10);
         this.setLocationName(caveNames[chosenName]);
@@ -14,5 +14,10 @@ public class Cave extends Area{
     @Override
     public void explore(Character character) {
 
+    }
+
+    @Override
+    public String toString() {
+        return "You are in the Cave " + super.toString();
     }
 }

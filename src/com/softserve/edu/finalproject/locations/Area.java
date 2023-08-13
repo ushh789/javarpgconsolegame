@@ -13,4 +13,8 @@ public abstract class Area {
 
     public abstract void explore(Character character);
 
+    @Override
+    public String toString() {
+        return locationName;
+    }
 }

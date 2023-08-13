@@ -15,7 +15,7 @@ public class DungeonRunner {
         KeyEventsHandler keyEventsHandler = new KeyEventsHandler();
         Thread inputThread = new Thread(keyEventsHandler);
         inputThread.start();
-
+        System.out.println("\033[107m\033[30m"); // BACKGORUND CHANGE CODE
         GameWindows.mainWindow();
         try {
             inputThread.join();

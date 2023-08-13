@@ -12,18 +12,11 @@ public class Rogue extends GameCharacter implements Ability {
         this.setHealth(120);
     }
 
-    @Override
-    public void attack(Enemy target) {
-
-    }
-
-    @Override
-    public void heal(int healing) {
-
-    }
-
-    public void useAbility(Enemy target) {
-
+    public boolean useAbility(Enemy target) {
+        int damageStealing = (int) (target.getDamage() * 0.35);
+        target.setDamage(target.getDamage() - damageStealing);
+        this.increaseDamage(damageStealing);
+        return true;
     }
 
     @Override

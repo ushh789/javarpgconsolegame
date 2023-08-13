@@ -12,24 +12,20 @@ public class Mage extends GameCharacter implements Ability {
         this.setHealth(120);
     }
 
-    public void attack(Enemy target) {
-
-    }
-
-    public void heal(int healing) {
-
-    }
-
     @Override
-    public void useAbility(Enemy target) {
-
+    public boolean useAbility(Enemy target) {
+        this.setMana(this.getMana() - 100);
+        int healthStealing = (int) (target.getHealth() * 0.15);
+        this.heal(healthStealing);
+        this.attack(target, healthStealing);
+        return true;
     }
 
     @Override
     public String toString() {
         return GameConstants.CHARACTER_MAGE
                 + "\nMy name is " + getName()
-                + "\n[HEALTH] " + getHealth() + "hp"
+                + "\n[HEALTH] " + getHealth()
                 + "\n[DAMAGE] " + getDamage()
                 + "\n[MANA] " + getMana();
     }

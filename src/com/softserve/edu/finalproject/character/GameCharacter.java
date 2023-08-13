@@ -53,7 +53,26 @@ public abstract class GameCharacter {
         this.mana = mana;
     }
 
-    public abstract void attack(Enemy target);
+    public void increaseDamage(int value) {
+//        this.setDamage(this.getDamage() + value);
+        damage += value;
+    }
 
-    public abstract void heal(int healing);
+    public void increaseLevel() {
+//        this.setLevel(this.getLevel() + value);
+        level += 1;
+    }
+
+    public void increaseMana(int value) {
+        mana += value;
+    }
+
+    public void attack(Enemy target, int damage) {
+        target.setHealth(target.getHealth() - damage);
+    }
+
+    public void heal(int value) {
+//        this.setHealth(this.getHealth() + healing);
+        health += value;
+    }
 }

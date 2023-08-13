@@ -13,18 +13,9 @@ public class Priest extends GameCharacter implements Ability {
     }
 
     @Override
-    public void attack(Enemy target) {
-
-    }
-
-    @Override
-    public void heal(int healing) {
-
-    }
-
-    @Override
-    public void useAbility(Enemy target) {
-
+    public boolean useAbility(Enemy target) {
+        this.heal(40);
+        return true;
     }
 
     @Override

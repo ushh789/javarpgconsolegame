@@ -1,5 +1,6 @@
 package com.softserve.edu.finalproject.services;
 
+import com.softserve.edu.finalproject.constants.Windows;
 import com.softserve.edu.finalproject.enemy.*;
 import com.softserve.edu.finalproject.locations.*;
 
@@ -19,8 +20,9 @@ public class GameEvents {
         System.out.flush();
     }
 
-    public static void generate(){
+    public static Windows generate() {
         Random random = new Random();
+
         int randomLocation = random.nextInt(4);
         switch (randomLocation) {
             case 0 -> location = new Cave();
@@ -30,22 +32,40 @@ public class GameEvents {
             default -> throw new IllegalStateException("Unexpected value: " + randomLocation);
         }
 
-        int randomEnemy = random.nextInt(8);
-        int enemyName = random.nextInt(10);
-        switch (randomEnemy){
-            case 0 -> enemy = new Dragon(dragonNames[enemyName]);
-            case 1 -> enemy = new Dwarf(dwarfNames[enemyName]);
-            case 2 -> enemy = new Elf(elfNames[enemyName]);
-            case 3 -> enemy = new Goblin(goblinNames[enemyName]);
-            case 4 -> enemy = new Human(humanNames[enemyName]);
-            case 5 -> enemy = new Ork(orkNames[enemyName]);
-            case 6 -> enemy = new Skeleton(skeletonNames[enemyName]);
-            case 7 -> enemy = new Undead(undeadNames[enemyName]);
-            default -> throw new IllegalStateException("Unexpected value: " + randomEnemy);
+        int randomEvent = random.nextInt(100);
+
+        if (randomEvent >= 0 && randomEvent < 25) {
+            System.out.println(location);
+            System.out.println("YOU ARE IN THE REST ROOM");
+            player.increaseLevel();
+            player.heal(random.nextInt(11) + 10);
+            player.increaseDamage(5);
+            return Windows.START;
+        } else if (randomEvent >= 25 && randomEvent < 50) {
+            System.out.println(location);
+            System.out.println("YOU ARE IN THE CHEST ROOM");
+            player.increaseLevel();
+            player.increaseMana(100);
+            return Windows.START;
+        } else if (randomEvent >= 50) {
+            System.out.println(location);
+            int randomEnemy = random.nextInt(8);
+            int enemyName = random.nextInt(10);
+            switch (randomEnemy) {
+                case 0 -> enemy = new Dragon(dragonNames[enemyName]);
+                case 1 -> enemy = new Dwarf(dwarfNames[enemyName]);
+                case 2 -> enemy = new Elf(elfNames[enemyName]);
+                case 3 -> enemy = new Goblin(goblinNames[enemyName]);
+                case 4 -> enemy = new Human(humanNames[enemyName]);
+                case 5 -> enemy = new Ork(orkNames[enemyName]);
+                case 6 -> enemy = new Skeleton(skeletonNames[enemyName]);
+                case 7 -> enemy = new Undead(undeadNames[enemyName]);
+                default -> throw new IllegalStateException("Unexpected value: " + randomEnemy);
+            }
+            System.out.println(enemy);
+            return Windows.FIGHT;
         }
-//        enemy.setDamage();
-        System.out.println(enemy);
-        System.out.println(location);
+        return null;
     }
 
     public static void quit() {

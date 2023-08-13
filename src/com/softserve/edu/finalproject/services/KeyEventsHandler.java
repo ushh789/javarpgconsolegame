@@ -68,7 +68,14 @@ public class KeyEventsHandler implements Runnable {
         } else if (currentWindow == Windows.CREATED) {
             switch (key) {
                 case "1" -> {
-                    GameEvents.generate();
+                    Windows tempRoom = GameEvents.generate();
+                    if (tempRoom == Windows.START){
+                        GameEvents.clearCLI();
+                        GameWindows.createdWindow();
+                    } else if (tempRoom == Windows.FIGHT) {
+                        System.out.println("FIGHT");
+                        GameWindows.createdWindow();
+                    }
                 }
                 case "2" -> GameEvents.quit();
             }

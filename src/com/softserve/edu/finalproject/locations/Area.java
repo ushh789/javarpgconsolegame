@@ -1,4 +1,4 @@
-package src.com.softserve.edu.finalproject.locations;
+package com.softserve.edu.finalproject.locations;
 
 public abstract class Area {
     private String locationName;

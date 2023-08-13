@@ -1,7 +1,7 @@
-package src.com.softserve.edu.finalproject.locations;
+package com.softserve.edu.finalproject.locations;
 
 import java.util.Random;
-import static src.com.softserve.edu.finalproject.constants.NamesAndTitles.townNames;
+import static com.softserve.edu.finalproject.constants.NamesAndTitles.townNames;
 
 public class Town extends Area{
     Town(){

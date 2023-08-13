@@ -1,6 +1,6 @@
-package src.com.softserve.edu.finalproject.enemy;
+package com.softserve.edu.finalproject.enemy;
 
-import src.com.softserve.edu.finalproject.character.GameCharacter;
+import com.softserve.edu.finalproject.character.GameCharacter;
 
 public class Enemy {
     private String name;

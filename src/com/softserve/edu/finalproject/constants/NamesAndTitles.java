@@ -1,4 +1,4 @@
-package src.com.softserve.edu.finalproject.constants;
+package com.softserve.edu.finalproject.constants;
 
 public class NamesAndTitles {
     public static final String[] townNames = {

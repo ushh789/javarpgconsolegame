@@ -1,4 +1,4 @@
-package src.com.softserve.edu.finalproject.constants;
+package com.softserve.edu.finalproject.constants;
 
 
 import static com.softserve.edu.finalproject.DungeonRunner.player;

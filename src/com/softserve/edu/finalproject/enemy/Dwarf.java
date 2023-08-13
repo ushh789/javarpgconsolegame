@@ -1,4 +1,4 @@
-package src.com.softserve.edu.finalproject.enemy;
+package com.softserve.edu.finalproject.enemy;
 
 public class Dwarf extends Enemy {
     private Enemies enemyType;

@@ -1,5 +1,6 @@
 package com.softserve.edu.finalproject.character;
 
+import com.softserve.edu.finalproject.constants.GameConstants;
 import com.softserve.edu.finalproject.enemy.Enemy;
 
 public class Mage extends GameCharacter implements Ability {
@@ -22,5 +23,14 @@ public class Mage extends GameCharacter implements Ability {
     @Override
     public void useAbility(Enemy target) {
 
+    }
+
+    @Override
+    public String toString() {
+        return GameConstants.CHARACTER_MAGE
+                + "\nMy name is " + getName()
+                + "\n[HEALTH] " + getHealth() + "hp"
+                + "\n[DAMAGE] " + getDamage()
+                + "\n[MANA] " + getMana();
     }
 }

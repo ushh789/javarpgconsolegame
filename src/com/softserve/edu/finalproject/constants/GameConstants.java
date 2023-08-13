@@ -4,6 +4,8 @@ public class GameConstants {
     public static final String RESET = "\u001B[0m";
     public static final String BOLD = "\u001B[1m";
     public static final String UNDERLINE = "\u001B[4m";
+
+    public static final String ITALIC = "\u001B[3m";
     public static final String BACKGROUND_RED = "\u001B[41m";
     public static final String TEXT_COLOR_CYAN = "\u001B[36m";
 
@@ -14,6 +16,24 @@ public class GameConstants {
              / /_/ / /_/ / / / / /_/ /  __/ /_/ / / / /  / _, _/ /_/ / / / / / / /  __/ /   \s
             /_____/\\__,_/_/ /_/\\__, /\\___/\\____/_/ /_/  /_/ |_|\\__,_/_/ /_/_/ /_/\\___/_/    \s
                               /____/                                                        \s
+            """;
+
+    public static final String LOAD_TITLE = """
+                __    ____  ___    ____\s
+               / /   / __ \\/   |  / __ \\
+              / /   / / / / /| | / / / /
+             / /___/ /_/ / ___ |/ /_/ /\s
+            /_____/\\____/_/  |_/_____/ \s
+                                       \s
+            """;
+
+    public static final String START_TITLE = """
+               ______________    ____  ______
+              / ___/_  __/   |  / __ \\/_  __/
+              \\__ \\ / / / /| | / /_/ / / /  \s
+             ___/ // / / ___ |/ _, _/ / /   \s
+            /____//_/ /_/  |_/_/ |_| /_/    \s
+                                            \s
             """;
 
     public static final String CHARACTER_WARRIOR = """

@@ -1,6 +1,9 @@
 package com.softserve.edu.finalproject.constants;
 
+import java.util.Scanner;
+
 public class GameConstants {
+    public static Scanner sc = new Scanner(System.in);
     public static final String RESET = "\u001B[0m";
     public static final String BOLD = "\u001B[1m";
     public static final String UNDERLINE = "\u001B[4m";

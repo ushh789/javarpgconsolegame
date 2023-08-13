@@ -1,4 +1,4 @@
-package com.softserve.edu.finalproject.constants;
+package src.com.softserve.edu.finalproject.constants;
 
 import java.util.Scanner;
 

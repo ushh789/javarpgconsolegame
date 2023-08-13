@@ -1,4 +1,4 @@
-package com.softserve.edu.finalproject.enemy;
+package src.com.softserve.edu.finalproject.enemy;
 
 public class Human extends Enemy {
     private Enemies enemyType;

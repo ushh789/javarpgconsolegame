@@ -1,4 +1,4 @@
-package com.softserve.edu.finalproject.character;
+package src.com.softserve.edu.finalproject.character;
 
 public enum Characters {
 

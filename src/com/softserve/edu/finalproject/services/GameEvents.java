@@ -1,4 +1,4 @@
-package com.softserve.edu.finalproject.services;
+package src.com.softserve.edu.finalproject.services;
 
 public class GameEvents {
 

@@ -63,18 +63,18 @@ public class KeyEventsHandler implements Runnable {
                 case "4" -> player = new Warrior(tempName, Characters.WARRIOR);
             }
             GameEvents.clearCLI();
-            GameWindows.createdWindow();
-            currentWindow = Windows.CREATED;
-        } else if (currentWindow == Windows.CREATED) {
+            GameWindows.characterPreviewWindow();
+            currentWindow = Windows.CONTINUE;
+        }  else if (currentWindow == Windows.CONTINUE) {
             switch (key) {
                 case "1" -> {
                     Windows tempRoom = GameEvents.generate();
                     if (tempRoom == Windows.START){
                         GameEvents.clearCLI();
-                        GameWindows.createdWindow();
+                        GameWindows.continueWindow();
                     } else if (tempRoom == Windows.FIGHT) {
-                        System.out.println("FIGHT");
-                        GameWindows.createdWindow();
+                        System.out.println(GameConstants.TEXT_COLOR_RED + GameConstants.FIGHT + GameConstants.RESET);
+                        GameWindows.continueWindow();
                     }
                 }
                 case "2" -> GameEvents.quit();

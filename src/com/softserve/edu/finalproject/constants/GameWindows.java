@@ -36,7 +36,13 @@ public class GameWindows {
         return name;
     }
 
-    public static void createdWindow() {
+    public static void continueWindow() {
+        System.out.println(GameConstants.BOLD + "\nSelect an option:" + GameConstants.RESET);
+        System.out.println("[1] Continue");
+        System.out.println("[2] Save and quit");
+    }
+
+    public static void characterPreviewWindow() {
         System.out.println(GameConstants.TEXT_COLOR_CYAN + player + "\n" + GameConstants.RESET);
 
         System.out.println(GameConstants.BOLD + "Select an option:" + GameConstants.RESET);

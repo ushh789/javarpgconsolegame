@@ -1,5 +1,6 @@
 package com.softserve.edu.finalproject.services;
 
+import com.softserve.edu.finalproject.constants.GameConstants;
 import com.softserve.edu.finalproject.constants.Windows;
 import com.softserve.edu.finalproject.enemy.*;
 import com.softserve.edu.finalproject.locations.*;
@@ -35,15 +36,15 @@ public class GameEvents {
         int randomEvent = random.nextInt(100);
 
         if (randomEvent >= 0 && randomEvent < 25) {
-            System.out.println(location);
-            System.out.println("YOU ARE IN THE REST ROOM");
+            System.out.println("\n" + GameConstants.BOLD + location + "..." + GameConstants.RESET);
+            System.out.println(GameConstants.BOLD + GameConstants.TEXT_COLOR_GREEN + GameConstants.REST_ROOM + GameConstants.RESET);
             player.increaseLevel();
             player.heal(random.nextInt(11) + 10);
             player.increaseDamage(5);
             return Windows.START;
         } else if (randomEvent >= 25 && randomEvent < 50) {
             System.out.println(location);
-            System.out.println("YOU ARE IN THE CHEST ROOM");
+            System.out.println(GameConstants.BOLD + GameConstants.TEXT_COLOR_YELLOW + GameConstants.CHEST_ROOM + GameConstants.RESET);
             player.increaseLevel();
             player.increaseMana(100);
             return Windows.START;

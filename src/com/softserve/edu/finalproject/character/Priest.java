@@ -22,7 +22,7 @@ public class Priest extends GameCharacter implements Ability {
     public String toString() {
         return GameConstants.CHARACTER_PRIEST
                 + "\nMy name is " + getName()
-                + "\n[HEALTH] " + getHealth() + "hp"
+                + "\n[HEALTH] " + getHealth()
                 + "\n[DAMAGE] " + getDamage()
                 + "\n[MANA] " + getMana();
     }

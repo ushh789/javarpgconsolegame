@@ -1,5 +1,6 @@
 package com.softserve.edu.finalproject.character;
 
+import com.softserve.edu.finalproject.constants.GameConstants;
 import com.softserve.edu.finalproject.enemy.Enemy;
 
 public abstract class GameCharacter {
@@ -55,7 +56,9 @@ public abstract class GameCharacter {
 
     public void increaseDamage(int value) {
 //        this.setDamage(this.getDamage() + value);
+        System.out.print(GameConstants.TEXT_COLOR_CYAN + "[DAMAGE] " + damage);
         damage += value;
+        System.out.print(" -> " + damage + GameConstants.RESET + "\n");
     }
 
     public void increaseLevel() {
@@ -64,7 +67,9 @@ public abstract class GameCharacter {
     }
 
     public void increaseMana(int value) {
+        System.out.print(GameConstants.TEXT_COLOR_CYAN + "[MANA] " + mana);
         mana += value;
+        System.out.print(" -> " + mana + GameConstants.RESET + "\n");
     }
 
     public void attack(Enemy target, int damage) {
@@ -73,6 +78,8 @@ public abstract class GameCharacter {
 
     public void heal(int value) {
 //        this.setHealth(this.getHealth() + healing);
+        System.out.print(GameConstants.TEXT_COLOR_CYAN + "[HEALTH] " + health);
         health += value;
+        System.out.print(" -> " + health + GameConstants.RESET + "\n");
     }
 }

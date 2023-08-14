@@ -43,13 +43,13 @@ public class GameEvents {
             player.increaseDamage(5);
             return Windows.START;
         } else if (randomEvent >= 25 && randomEvent < 50) {
-            System.out.println(location);
+            System.out.println("\n" + GameConstants.BOLD + location + "..." + GameConstants.RESET);
             System.out.println(GameConstants.BOLD + GameConstants.TEXT_COLOR_YELLOW + GameConstants.CHEST_ROOM + GameConstants.RESET);
             player.increaseLevel();
             player.increaseMana(100);
             return Windows.START;
         } else if (randomEvent >= 50) {
-            System.out.println(location);
+            System.out.println("\n" + GameConstants.BOLD + location + "..." + GameConstants.RESET);
             int randomEnemy = random.nextInt(8);
             int enemyName = random.nextInt(10);
             switch (randomEnemy) {
@@ -63,7 +63,6 @@ public class GameEvents {
                 case 7 -> enemy = new Undead(undeadNames[enemyName]);
                 default -> throw new IllegalStateException("Unexpected value: " + randomEnemy);
             }
-            System.out.println(enemy);
             return Windows.FIGHT;
         }
         return null;

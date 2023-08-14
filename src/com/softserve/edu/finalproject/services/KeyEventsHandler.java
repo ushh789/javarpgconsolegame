@@ -6,6 +6,7 @@ import com.softserve.edu.finalproject.constants.*;
 import java.io.IOException;
 import java.util.Objects;
 
+import static com.softserve.edu.finalproject.DungeonRunner.enemy;
 import static com.softserve.edu.finalproject.DungeonRunner.player;
 
 public class KeyEventsHandler implements Runnable {
@@ -74,6 +75,7 @@ public class KeyEventsHandler implements Runnable {
                         GameWindows.continueWindow();
                     } else if (tempRoom == Windows.FIGHT) {
                         System.out.println(GameConstants.TEXT_COLOR_RED + GameConstants.FIGHT + GameConstants.RESET);
+                        System.out.println(GameConstants.TEXT_COLOR_CYAN + GameConstants.ITALIC + enemy + GameConstants.RESET);
                         GameWindows.continueWindow();
                     }
                 }

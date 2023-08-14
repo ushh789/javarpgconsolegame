@@ -21,7 +21,7 @@ public class Dragon extends Enemy {
     @Override
     public String toString() {
         return super.toString()+ "\n" +
-                enemyType + " - " + this.getName() +
+                enemyType.getName() + " called " + this.getName() +
                 "\n[HEALTH] " + this.getHealth() +
                 "\n[DAMAGE] " + this.getDamage();
     }

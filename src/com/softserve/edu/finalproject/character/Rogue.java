@@ -21,7 +21,7 @@ public class Rogue extends GameCharacter implements Ability {
 
     @Override
     public String toString() {
-        return "GameConstants.CHARACTER_ROGUE"
+        return GameConstants.CHARACTER_ROGUE
                 + "\nMy name is " + getName()
                 + "\n[HEALTH] " + getHealth()
                 + "\n[DAMAGE] " + getDamage()

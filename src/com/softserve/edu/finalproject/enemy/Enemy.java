@@ -44,6 +44,20 @@ public class Enemy {
         this.health += health;
     }
 
+    public void stealDamage(GameCharacter target, int value) {
+        target.setDamage(target.getDamage() - value);
+        damage += value;
+    }
+
+    public void stealHealth(GameCharacter target, int value) {
+        target.setHealth(target.getHealth() - value);
+        health += value;
+    }
+
+    public void increaseDamage(int value) {
+        damage += value;
+    }
+
     @Override
     public String toString() {
         return "You are fighting against: ";

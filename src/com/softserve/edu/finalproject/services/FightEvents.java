@@ -19,6 +19,12 @@ public class FightEvents {
     private int randomHeal;
     private int randomHealthStealingValue;
     private int healthStealingValue;
+    private int damageBotStealingValue;
+    private int randomBotIncreaseDamage;
+    private int healthBotStealingValue;
+    private int randomBotHeal;
+    private int botChoice;
+
     private GameCharacter player;
     private Enemy enemy;
 
@@ -36,6 +42,12 @@ public class FightEvents {
         randomDamageStealingValue = random.nextInt(15) + 10;
         randomHeal = random.nextInt(25) + 10;
         randomHealthStealingValue = random.nextInt(20) + 5;
+
+        randomBotIncreaseDamage = random.nextInt(3) + 1;
+        randomBotHeal = random.nextInt(10) + 5;
+        damageBotStealingValue = (int) (((float) this.player.getDamage() / 100) * randomDamageStealingValue) + 1;
+        healthBotStealingValue = (int) (((float) this.player.getHealth() / 100) * randomHealthStealingValue) + 1;
+        botChoice = random.nextInt(5);
     }
 
     public void fightOptions() {
@@ -45,19 +57,14 @@ public class FightEvents {
                 damageStealingValue = (int) (((float) enemy.getDamage() / 100) * randomDamageStealingValue) + 1;
                 System.out.println("[1] Steal " + damageStealingValue + " DMG");
             }
-            case 2 -> {
-                System.out.println("[1] Damage +" + randomIncreaseDamage + " DMG");
-            }
-
+            case 2 -> System.out.println("[1] Damage +" + randomIncreaseDamage + " DMG");
         }
         switch (randomHealAction) {
             case 0 -> {
                 healthStealingValue = (int) (((float) enemy.getHealth() / 100) * randomHealthStealingValue) + 1;
                 System.out.println("[2] Steal " + healthStealingValue + " HP");
             }
-            case 1 -> {
-                System.out.println("[2] Heal +" + randomHeal + " HP");
-            }
+            case 1 -> System.out.println("[2] Heal +" + randomHeal + " HP");
         }
     }
 
@@ -73,7 +80,15 @@ public class FightEvents {
         switch (randomHealAction) {
             case 0 -> player.stealHealth(enemy, healthStealingValue);
             case 1 -> player.heal(randomHeal);
-
+        }
+    }
+    public void botOptions(){
+        switch(botChoice){
+            case 0 -> enemy.attack(player, player.getDamage());
+            case 1 -> enemy.stealDamage(player, damageBotStealingValue);
+            case 2 -> enemy.increaseDamage(randomBotIncreaseDamage);
+            case 3 -> enemy.stealHealth(player, healthBotStealingValue);
+            case 4 -> enemy.heal(randomBotHeal);
         }
     }
 

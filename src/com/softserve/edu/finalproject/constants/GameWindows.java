@@ -100,7 +100,7 @@ public class GameWindows {
     }
 
     public static void lostFightWindow() {
-        System.out.println(GameConstants.TEXT_COLOR_GREEN + GameConstants.LOST_TITLE + GameConstants.RESET);
+        System.out.println(GameConstants.TEXT_COLOR_RED + GameConstants.LOST_TITLE + GameConstants.RESET);
     }
 
     public static void winFightWindow() {

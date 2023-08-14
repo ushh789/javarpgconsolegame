@@ -92,9 +92,8 @@ public class KeyEventsHandler implements Runnable {
                     if (enemy.getHealth() <= 0) {
                         GameWindows.winFightWindow();
                         System.out.print(GameConstants.TEXT_COLOR_CYAN + "[MANA] " + player.getMana());
-//                        player.increaseMana(50);
+                        player.increaseMana(50);
                         System.out.print(" -> " + player.getMana() + GameConstants.RESET + "\n");
-                        player.setMana(player.getMana() + 100);
                         currentWindow = Windows.CONTINUE;
                         GameWindows.continueWindow();
                         break;
@@ -117,18 +116,21 @@ public class KeyEventsHandler implements Runnable {
             switch (key) {
                 case "1" -> {
                     fe.attackOption();
+                    fe.botOptions();
                     GameWindows.continueFightStageWindow(fe);
                     GameWindows.continueWindow();
                     currentWindow = Windows.CONTINUE_FIGHT;
                 }
                 case "2" -> {
                     fe.healOption();
+                    fe.botOptions();
                     GameWindows.continueFightStageWindow(fe);
                     GameWindows.continueWindow();
                     currentWindow = Windows.CONTINUE_FIGHT;
                 }
                 case "3" -> {
                     if (fe.abilityOption()) {
+                        fe.botOptions();
                         GameWindows.continueFightStageWindow(fe);
                         GameWindows.continueWindow();
                         currentWindow = Windows.CONTINUE_FIGHT;

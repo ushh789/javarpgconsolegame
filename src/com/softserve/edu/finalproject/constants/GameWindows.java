@@ -53,14 +53,54 @@ public class GameWindows {
         System.out.println("[2] Save and quit");
     }
 
-    public static void fightWindow(){
-        System.out.println(GameConstants.TEXT_COLOR_RED + player + "\n" + GameConstants.RESET); // player stats
+    public static void startFightStageWindow() {
+        StringBuilder gameStats = new StringBuilder();
+        gameStats.append(GameConstants.TEXT_COLOR_CYAN);
+        gameStats.append(GameConstants.BOLD);
 
-        System.out.println(GameConstants.TEXT_COLOR_RED + enemy + "\n" + GameConstants.RESET); //enemy stats
-        System.out.println("[1] Attack");
-        System.out.println("[2] Heal");
+        gameStats.append(String.format("%-30s%-30s%n", "[" + player.getName() + "]", "[" + enemy.getName() + "]"));
+        gameStats.append(GameConstants.RESET);
+        gameStats.append(GameConstants.TEXT_COLOR_CYAN);
+        gameStats.append(GameConstants.ITALIC);
+        gameStats.append(String.format("%-10s%-20s%-10s%-20s%n", "[HEALTH]", player.getHealth(), "[HEALTH]", enemy.getHealth()));
+        gameStats.append(String.format("%-10s%-20s%-10s%-20s%n", "[DAMAGE]", player.getDamage(), "[DAMAGE]", enemy.getDamage()));
+        gameStats.append(String.format("%-10s%-10s%n", "[MANA]", player.getMana()));
+
+        gameStats.append(GameConstants.RESET);
+
+        System.out.println(gameStats);
+    }
+
+    public static void continueFightStageWindow() {
+        StringBuilder gameStats = new StringBuilder();
+        gameStats.append(GameConstants.TEXT_COLOR_CYAN);
+        gameStats.append(GameConstants.BOLD);
+
+        gameStats.append(String.format("%-30s%-30s%n", "[" + player.getName() + "]", "[" + enemy.getName() + "]"));
+        gameStats.append(GameConstants.RESET);
+        gameStats.append(GameConstants.TEXT_COLOR_CYAN);
+        gameStats.append(GameConstants.ITALIC);
+        gameStats.append(String.format("%-10s%-20s%-10s%-20s%n", "[HEALTH] ", player.getHealth(), "[HEALTH]", enemy.getHealth()));
+        gameStats.append(String.format("%-10s%-20s%-10s%-20s%n", "[DAMAGE]", player.getDamage(), "[DAMAGE]", enemy.getDamage()));
+        gameStats.append(String.format("%-10s%-10s%n", "[MANA]", player.getMana()));
+
+        gameStats.append(GameConstants.RESET);
+
+        System.out.println(gameStats);
+    }
+
+    public static void endFightStageWindow() {
         System.out.println("[3] Use Ability");
         System.out.println("[4] Exit");
+    }
+
+    public static void lostFightWindow() {
+        System.out.println(GameConstants.TEXT_COLOR_GREEN + GameConstants.LOST_TITLE + GameConstants.RESET);
+    }
+
+    public static void winFightWindow() {
+        System.out.println(GameConstants.TEXT_COLOR_GREEN + GameConstants.WIN_TITLE + GameConstants.RESET);
+
 
     }
 

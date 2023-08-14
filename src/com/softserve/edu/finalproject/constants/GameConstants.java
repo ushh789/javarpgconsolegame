@@ -54,6 +54,24 @@ public class GameConstants {
                                       \s 
             """;
 
+    public static final String WIN_TITLE = """
+             _       _______   __
+            | |     / /  _/ | / /
+            | | /| / // //  |/ /\s
+            | |/ |/ // // /|  / \s
+            |__/|__/___/_/ |_/  \s
+                                \s
+            """;
+
+    public static final String LOST_TITLE = """
+                __    ____  ___________
+               / /   / __ \\/ ___/_  __/
+              / /   / / / /\\__ \\ / /  \s
+             / /___/ /_/ /___/ // /   \s
+            /_____/\\____//____//_/    \s
+                                      \s
+            """;
+
     public static final String CHARACTER_WARRIOR = """
               / \\
               | |

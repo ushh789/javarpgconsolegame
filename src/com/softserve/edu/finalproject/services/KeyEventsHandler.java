@@ -28,7 +28,6 @@ public class KeyEventsHandler implements Runnable {
     private void handleKey(String key) throws IOException, InterruptedException {
         if (Objects.equals(key, "q")) GameEvents.quit();
         if (currentWindow == Windows.MAIN) {
-
             switch (key) {
                 case "1" -> {
                     GameEvents.clearCLI();
@@ -66,22 +65,26 @@ public class KeyEventsHandler implements Runnable {
             GameEvents.clearCLI();
             GameWindows.characterPreviewWindow();
             currentWindow = Windows.CONTINUE;
-        }  else if (currentWindow == Windows.CONTINUE) {
+        } else if (currentWindow == Windows.CONTINUE) {
             switch (key) {
                 case "1" -> {
                     Windows tempRoom = GameEvents.generate();
-                    if (tempRoom == Windows.START){
+                    if (tempRoom == Windows.START) {
                         GameEvents.clearCLI();
                         GameWindows.continueWindow();
                     } else if (tempRoom == Windows.FIGHT) {
                         System.out.println(GameConstants.TEXT_COLOR_RED + GameConstants.FIGHT + GameConstants.RESET);
                         System.out.println(GameConstants.TEXT_COLOR_CYAN + GameConstants.ITALIC + enemy + GameConstants.RESET);
+                        currentWindow = Windows.FIGHT;
                         GameWindows.continueWindow();
                     }
                 }
                 case "2" -> GameEvents.quit();
             }
 
+        } else if (currentWindow == Windows.FIGHT) {
+            GameWindows.startFightStageWindow();
+            GameWindows.endFightStageWindow();
         }
     }
 }

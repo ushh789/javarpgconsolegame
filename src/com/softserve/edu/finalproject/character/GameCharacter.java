@@ -77,7 +77,6 @@ public abstract class GameCharacter {
     }
 
     public void heal(int value) {
-//        this.setHealth(this.getHealth() + healing);
         System.out.print(GameConstants.TEXT_COLOR_CYAN + "[HEALTH] " + health);
         health += value;
         System.out.print(" -> " + health + GameConstants.RESET + "\n");

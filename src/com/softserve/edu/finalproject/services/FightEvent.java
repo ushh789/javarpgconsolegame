@@ -10,17 +10,14 @@ public class FightEvent {
     private int enemyOldHealth;
     private int playerOldDamage;
     private int enemyOldDamage;
-    private int randomAttackAction; //2
+    private int randomAttackAction;
     private int randomHealAction;
-
     private Random random;
-
-    private int randomIncreaseDamage = random.nextInt(5) + 2;
-
-    int randomStealingValue = random.nextInt(5) + 5;
-
+    private int randomIncreaseDamage;
+    private int randomDamageStealingValue;
+    private int randomHeal;
+    private int randomHealthStealingValue;
     private GameCharacter player;
-
     private Enemy enemy;
 
     public FightEvent(GameCharacter player, Enemy target) {
@@ -33,62 +30,72 @@ public class FightEvent {
         playerOldHealth = player.getHealth();
         enemyOldDamage = target.getDamage();
         enemyOldHealth = target.getHealth();
+        randomIncreaseDamage = random.nextInt(5) + 2;
+        randomDamageStealingValue = random.nextInt(5) + 5;
+        randomHeal = random.nextInt(25) + 10;
+        randomHealthStealingValue = random.nextInt(10) + 5;
     }
 
-    public int getRandomAttackAction() {
-        return randomAttackAction;
-    }
-
-    public int getRandomHealAction() {
-        return randomHealAction;
-    }
-
-    public void fight() {
+    public void fightOptions() {
         switch (randomAttackAction) {
             case 0 -> System.out.println("[1] Attack " + "-" + player.getDamage() + "HP");
-
-//                player.attack(target, player.getDamage());
             case 1 -> {
-                randomStealingValue = randomStealingValue + (randomStealingValue * enemy.getDamage()) / 100;
-                System.out.println("[1] Steal " + randomStealingValue + " DMG");
+                randomDamageStealingValue = randomDamageStealingValue +
+                        (randomDamageStealingValue * enemy.getDamage()) / 100;
+                System.out.println("[1] Steal " + randomDamageStealingValue + " DMG");
             }
-//                player.stealDamage(target, randomStealingValue);
             case 2 -> {
                 System.out.println("[1] Damage +" + randomIncreaseDamage + " DMG");
             }
-//                player.increaseDamage(randomIncreaseDamage);
-        }
 
+        }
         switch (randomHealAction) {
             case 0 -> {
-                int randomStealingValue = random.nextInt(10) + 5;
-                randomStealingValue = randomStealingValue + (randomStealingValue * enemy.getHealth()) / 50;
-                System.out.println("[2] Steal " + randomStealingValue + " HP");
+                randomHealthStealingValue = randomHealthStealingValue +
+                        (randomHealthStealingValue * enemy.getHealth()) / 50;
+                System.out.println("[2] Steal " + randomHealthStealingValue + " HP");
             }
-//                player.stealHealth(target, randomStealingValue);
             case 1 -> {
-                int randomHeal = random.nextInt(25) + 10;
                 System.out.println("[2] Heal +" + randomHeal + " HP");
             }
-//                player.heal(randomHeal);
         }
     }
 
-    public void attack() {
+    public void attackOption() {
         switch (randomAttackAction) {
             case 0 -> {
-
+                player.attack(enemy, player.getDamage());
             }
             case 1 -> {
-
+                player.stealDamage(enemy, randomDamageStealingValue);
             }
             case 2 -> {
-                player.setDamage(player.getDamage() + randomIncreaseDamage);
+                player.increaseDamage(randomIncreaseDamage);
             }
         }
     }
 
-    public void heal() {
+    public void healOption() {
+        switch (randomHealAction) {
+            case 0 -> player.stealHealth(enemy, randomHealthStealingValue);
+            case 1 -> player.heal(randomHeal);
 
+        }
+    }
+
+    public int getPlayerOldHealth() {
+        return playerOldHealth;
+    }
+
+    public int getEnemyOldHealth() {
+        return enemyOldHealth;
+    }
+
+    public int getPlayerOldDamage() {
+        return playerOldDamage;
+    }
+
+    public int getEnemyOldDamage() {
+        return enemyOldDamage;
     }
 }

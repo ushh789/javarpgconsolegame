@@ -5,7 +5,7 @@ import com.softserve.edu.finalproject.enemy.Enemy;
 
 import java.util.Random;
 
-public class FightEvent {
+public class FightEvents {
     private int playerOldHealth;
     private int enemyOldHealth;
     private int playerOldDamage;
@@ -15,12 +15,14 @@ public class FightEvent {
     private Random random;
     private int randomIncreaseDamage;
     private int randomDamageStealingValue;
+    private int damageStealingValue;
     private int randomHeal;
     private int randomHealthStealingValue;
+    private int healthStealingValue;
     private GameCharacter player;
     private Enemy enemy;
 
-    public FightEvent(GameCharacter player, Enemy target) {
+    public FightEvents(GameCharacter player, Enemy target) {
         random = new Random();
         this.player = player;
         this.enemy = target;
@@ -31,18 +33,17 @@ public class FightEvent {
         enemyOldDamage = target.getDamage();
         enemyOldHealth = target.getHealth();
         randomIncreaseDamage = random.nextInt(5) + 2;
-        randomDamageStealingValue = random.nextInt(5) + 5;
+        randomDamageStealingValue = random.nextInt(15) + 10;
         randomHeal = random.nextInt(25) + 10;
-        randomHealthStealingValue = random.nextInt(10) + 5;
+        randomHealthStealingValue = random.nextInt(20) + 5;
     }
 
     public void fightOptions() {
         switch (randomAttackAction) {
             case 0 -> System.out.println("[1] Attack " + "-" + player.getDamage() + "HP");
             case 1 -> {
-                randomDamageStealingValue = randomDamageStealingValue +
-                        (randomDamageStealingValue * enemy.getDamage()) / 100;
-                System.out.println("[1] Steal " + randomDamageStealingValue + " DMG");
+                damageStealingValue = (int) (((float) enemy.getDamage() / 100) * randomDamageStealingValue) + 1;
+                System.out.println("[1] Steal " + damageStealingValue + " DMG");
             }
             case 2 -> {
                 System.out.println("[1] Damage +" + randomIncreaseDamage + " DMG");
@@ -51,9 +52,8 @@ public class FightEvent {
         }
         switch (randomHealAction) {
             case 0 -> {
-                randomHealthStealingValue = randomHealthStealingValue +
-                        (randomHealthStealingValue * enemy.getHealth()) / 50;
-                System.out.println("[2] Steal " + randomHealthStealingValue + " HP");
+                healthStealingValue = (int) (((float) enemy.getHealth() / 100) * randomHealthStealingValue) + 1;
+                System.out.println("[2] Steal " + healthStealingValue + " HP");
             }
             case 1 -> {
                 System.out.println("[2] Heal +" + randomHeal + " HP");
@@ -64,17 +64,24 @@ public class FightEvent {
     public void attackOption() {
         switch (randomAttackAction) {
             case 0 -> player.attack(enemy, player.getDamage());
-            case 1 -> player.stealDamage(enemy, randomDamageStealingValue);
+            case 1 -> player.stealDamage(enemy, damageStealingValue);
             case 2 -> player.increaseDamage(randomIncreaseDamage);
         }
     }
 
     public void healOption() {
         switch (randomHealAction) {
-            case 0 -> player.stealHealth(enemy, randomHealthStealingValue);
+            case 0 -> player.stealHealth(enemy, healthStealingValue);
             case 1 -> player.heal(randomHeal);
 
         }
+    }
+
+    public boolean abilityOption() {
+        if(player.getMana() >= 100 && player.isAbilityAvailable()) {
+            player.useAbility(enemy);
+            return true;
+        } else return false;
     }
 
     public int getPlayerOldHealth() {

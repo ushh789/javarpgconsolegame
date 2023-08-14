@@ -2,7 +2,7 @@ package com.softserve.edu.finalproject.constants;
 
 
 import com.softserve.edu.finalproject.character.Characters;
-import com.softserve.edu.finalproject.services.FightEvent;
+import com.softserve.edu.finalproject.services.FightEvents;
 
 import static com.softserve.edu.finalproject.DungeonRunner.enemy;
 import static com.softserve.edu.finalproject.DungeonRunner.player;
@@ -72,7 +72,7 @@ public class GameWindows {
         System.out.println(gameStats);
     }
 
-    public static void continueFightStageWindow(FightEvent fe) {
+    public static void continueFightStageWindow(FightEvents fe) {
         StringBuilder gameStats = new StringBuilder();
         gameStats.append(GameConstants.TEXT_COLOR_CYAN);
         gameStats.append(GameConstants.BOLD);

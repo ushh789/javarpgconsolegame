@@ -22,14 +22,6 @@ public abstract class GameCharacter {
         this.name = name;
     }
 
-    public int getLevel() {
-        return level;
-    }
-
-    public void setLevel(int level) {
-        this.level = level;
-    }
-
     public int getDamage() {
         return damage;
     }
@@ -55,14 +47,21 @@ public abstract class GameCharacter {
     }
 
     public void increaseDamage(int value) {
-//        this.setDamage(this.getDamage() + value);
         System.out.print(GameConstants.TEXT_COLOR_CYAN + "[DAMAGE] " + damage);
         damage += value;
         System.out.print(" -> " + damage + GameConstants.RESET + "\n");
     }
+    public void stealDamage(Enemy target, int value){
+        target.setDamage(target.getDamage() - value);
+        damage+= value;
+    }
+
+    public void stealHealth(Enemy target, int value){
+        target.setHealth(target.getHealth() - value);
+        health+= value;
+    }
 
     public void increaseLevel() {
-//        this.setLevel(this.getLevel() + value);
         level += 1;
     }
 

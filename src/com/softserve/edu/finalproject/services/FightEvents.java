@@ -84,7 +84,7 @@ public class FightEvents {
     }
     public void botOptions(){
         switch(botChoice){
-            case 0 -> enemy.attack(player, player.getDamage());
+            case 0 -> enemy.attack(player, enemy.getDamage());
             case 1 -> enemy.stealDamage(player, damageBotStealingValue);
             case 2 -> enemy.increaseDamage(randomBotIncreaseDamage);
             case 3 -> enemy.stealHealth(player, healthBotStealingValue);

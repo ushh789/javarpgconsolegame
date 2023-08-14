@@ -37,7 +37,7 @@ public class Enemy {
     }
 
     public void attack(GameCharacter target, int attack) {
-        target.setDamage(target.getDamage() - attack);
+        target.setHealth(target.getHealth() - attack);
     }
 
     public void heal(int health) {

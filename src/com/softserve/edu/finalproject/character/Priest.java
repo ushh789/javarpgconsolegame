@@ -14,6 +14,7 @@ public class Priest extends GameCharacter implements Ability {
 
     @Override
     public void useAbility(Enemy target) {
+        this.setMana(this.getMana() - 100);
         this.heal(40);
         setAbilityAvailable(!isAbilityAvailable());
     }

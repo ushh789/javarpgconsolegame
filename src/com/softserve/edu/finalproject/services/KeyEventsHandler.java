@@ -83,8 +83,19 @@ public class KeyEventsHandler implements Runnable {
             }
 
         } else if (currentWindow == Windows.FIGHT) {
+            FightEvent fe = new FightEvent(player, enemy);
             GameWindows.startFightStageWindow();
+            fe.fight();
             GameWindows.endFightStageWindow();
+
+            switch (key) {
+                case "1" -> {
+                    fe.attack();
+                }
+                case "2" -> {
+                    fe.heal();
+                }
+            }
         }
     }
 }

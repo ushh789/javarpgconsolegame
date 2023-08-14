@@ -90,7 +90,7 @@ public class GameWindows {
     }
 
     public static void endFightStageWindow() {
-        System.out.println("[3] Use Ability");
+        System.out.println("[3] Use ability");
         System.out.println("[4] Exit");
     }
 

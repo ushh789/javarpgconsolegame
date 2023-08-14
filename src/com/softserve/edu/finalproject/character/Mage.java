@@ -13,11 +13,11 @@ public class Mage extends GameCharacter implements Ability {
     }
 
     @Override
-    public boolean useAbility(Enemy target) {
+    public void useAbility(Enemy target) {
         this.setMana(this.getMana() - 100);
         int healthStealing = (int) (target.getHealth() * 0.15);
         this.stealHealth(target, healthStealing);
-        return true;
+        setAbilityAvailable(!isAbilityAvailable());
     }
 
     @Override

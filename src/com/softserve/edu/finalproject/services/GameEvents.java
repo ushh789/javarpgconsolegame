@@ -12,10 +12,6 @@ import java.util.Random;
 
 public class GameEvents {
 
-    public static void start() {
-
-    }
-
     public static void clearCLI() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
@@ -35,7 +31,7 @@ public class GameEvents {
 
         int randomEvent = random.nextInt(100);
 
-        if (randomEvent >= 0 && randomEvent < 25) {
+        if (randomEvent > 0 && randomEvent < 25) {
             System.out.println("\n" + GameConstants.BOLD + location + "..." + GameConstants.RESET);
             System.out.println(GameConstants.BOLD + GameConstants.TEXT_COLOR_GREEN + GameConstants.REST_ROOM + GameConstants.RESET);
             player.increaseLevel();
@@ -74,6 +70,11 @@ public class GameEvents {
                 case 7 -> enemy = new Undead(undeadNames[enemyName]);
                 default -> throw new IllegalStateException("Unexpected value: " + randomEnemy);
             }
+
+            // Generating enemy stats formula -> improve
+            enemy.setHealth((enemy.getHealth() + (player.getLevel() * 5)));
+            enemy.setDamage((enemy.getDamage() + (player.getLevel() * 3)));
+
             return Windows.FIGHT;
         }
         return null;

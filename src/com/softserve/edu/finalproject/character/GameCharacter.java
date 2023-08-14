@@ -11,9 +11,11 @@ public abstract class GameCharacter implements Ability {
     private int damage;
     private int health;
     private int mana;
+    private boolean abilityAvailable;
 
     public GameCharacter(String name) {
         this.name = name;
+        abilityAvailable = true;
     }
 
     public String getName() {
@@ -59,6 +61,18 @@ public abstract class GameCharacter implements Ability {
     }
     public void increaseDamage(int value) {
         damage += value;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public boolean isAbilityAvailable() {
+        return abilityAvailable;
+    }
+
+    public void setAbilityAvailable(boolean abilityAvailable) {
+        this.abilityAvailable = abilityAvailable;
     }
 
     public void increaseLevel() {

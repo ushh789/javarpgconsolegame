@@ -1,6 +1,9 @@
 package com.softserve.edu.finalproject.constants;
 
 
+import com.softserve.edu.finalproject.character.Characters;
+
+import static com.softserve.edu.finalproject.DungeonRunner.enemy;
 import static com.softserve.edu.finalproject.DungeonRunner.player;
 
 public class GameWindows {
@@ -48,6 +51,17 @@ public class GameWindows {
         System.out.println(GameConstants.BOLD + "Select an option:" + GameConstants.RESET);
         System.out.println("[1] Continue");
         System.out.println("[2] Save and quit");
+    }
+
+    public static void fightWindow(){
+        System.out.println(GameConstants.TEXT_COLOR_RED + player + "\n" + GameConstants.RESET); // player stats
+
+        System.out.println(GameConstants.TEXT_COLOR_RED + enemy + "\n" + GameConstants.RESET); //enemy stats
+        System.out.println("[1] Attack");
+        System.out.println("[2] Heal");
+        System.out.println("[3] Use Ability");
+        System.out.println("[4] Exit");
+
     }
 
     public static void loadGame() {

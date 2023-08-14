@@ -81,6 +81,7 @@ public class KeyEventsHandler implements Runnable {
                 }
                 case "2" -> GameEvents.quit();
             }
+
         }
     }
 }

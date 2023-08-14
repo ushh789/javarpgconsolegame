@@ -57,8 +57,7 @@ public class GameWindows {
         System.out.println(GameConstants.TEXT_COLOR_RED + player + "\n" + GameConstants.RESET); // player stats
 
         System.out.println(GameConstants.TEXT_COLOR_RED + enemy + "\n" + GameConstants.RESET); //enemy stats
-        System.out.println("[1] Attack");
-        System.out.println("[2] Heal");
+
         System.out.println("[3] Use Ability");
         System.out.println("[4] Exit");
 

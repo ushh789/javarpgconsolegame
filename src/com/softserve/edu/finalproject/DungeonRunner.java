@@ -16,6 +16,8 @@ public class DungeonRunner {
         Thread inputThread = new Thread(keyEventsHandler);
         inputThread.start();
         GameWindows.mainWindow();
+
+
         try {
             inputThread.join();
         } catch (InterruptedException e) {

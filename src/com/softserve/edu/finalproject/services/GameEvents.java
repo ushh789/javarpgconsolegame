@@ -39,14 +39,25 @@ public class GameEvents {
             System.out.println("\n" + GameConstants.BOLD + location + "..." + GameConstants.RESET);
             System.out.println(GameConstants.BOLD + GameConstants.TEXT_COLOR_GREEN + GameConstants.REST_ROOM + GameConstants.RESET);
             player.increaseLevel();
+
+            System.out.print(GameConstants.TEXT_COLOR_CYAN + "[HEALTH] " + player.getHealth());
             player.heal(random.nextInt(11) + 10);
+            System.out.print(" -> " + player.getHealth() + GameConstants.RESET + "\n");
+
+            System.out.print(GameConstants.TEXT_COLOR_CYAN + "[DAMAGE] " + player.getDamage());
             player.increaseDamage(5);
+            System.out.print(" -> " + player.getDamage() + GameConstants.RESET + "\n");
+
             return Windows.START;
         } else if (randomEvent >= 25 && randomEvent < 50) {
             System.out.println("\n" + GameConstants.BOLD + location + "..." + GameConstants.RESET);
             System.out.println(GameConstants.BOLD + GameConstants.TEXT_COLOR_YELLOW + GameConstants.CHEST_ROOM + GameConstants.RESET);
             player.increaseLevel();
+
+            System.out.print(GameConstants.TEXT_COLOR_CYAN + "[MANA] " + player.getMana());
             player.increaseMana(100);
+            System.out.print(" -> " + player.getMana() + GameConstants.RESET + "\n");
+
             return Windows.START;
         } else if (randomEvent >= 50) {
             System.out.println("\n" + GameConstants.BOLD + location + "..." + GameConstants.RESET);

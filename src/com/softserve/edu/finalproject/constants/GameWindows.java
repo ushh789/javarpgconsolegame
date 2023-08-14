@@ -105,6 +105,7 @@ public class GameWindows {
 
     public static void winFightWindow() {
         System.out.println(GameConstants.TEXT_COLOR_GREEN + GameConstants.WIN_TITLE + GameConstants.RESET);
+//        System.out.println(GameConstants.TEXT_COLOR_CYAN + player. + GameConstants.RESET);
 
 
     }

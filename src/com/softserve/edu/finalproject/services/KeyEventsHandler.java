@@ -91,6 +91,9 @@ public class KeyEventsHandler implements Runnable {
                 case "1" -> {
                     if (enemy.getHealth() <= 0) {
                         GameWindows.winFightWindow();
+                        System.out.print(GameConstants.TEXT_COLOR_CYAN + "[MANA] " + player.getMana());
+//                        player.increaseMana(50);
+                        System.out.print(" -> " + player.getMana() + GameConstants.RESET + "\n");
                         player.setMana(player.getMana() + 100);
                         currentWindow = Windows.CONTINUE;
                         GameWindows.continueWindow();

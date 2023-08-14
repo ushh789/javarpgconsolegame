@@ -12,7 +12,8 @@ public abstract class GameCharacter implements Ability {
 
     public GameCharacter(String name) {
         this.name = name;
-        abilityAvailable = true;
+        abilityAvailable = false;
+
     }
 
     public String getName() {

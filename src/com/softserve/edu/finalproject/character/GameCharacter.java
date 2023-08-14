@@ -1,9 +1,6 @@
 package com.softserve.edu.finalproject.character;
 
-import com.softserve.edu.finalproject.constants.GameConstants;
-import com.softserve.edu.finalproject.constants.Windows;
 import com.softserve.edu.finalproject.enemy.Enemy;
-import com.softserve.edu.finalproject.services.KeyEventsHandler;
 
 public abstract class GameCharacter implements Ability {
     private String name;
@@ -11,9 +8,11 @@ public abstract class GameCharacter implements Ability {
     private int damage;
     private int health;
     private int mana;
+    private boolean abilityAvailable;
 
     public GameCharacter(String name) {
         this.name = name;
+        abilityAvailable = true;
     }
 
     public String getName() {
@@ -61,6 +60,18 @@ public abstract class GameCharacter implements Ability {
         damage += value;
     }
 
+    public int getLevel() {
+        return level;
+    }
+
+    public boolean isAbilityAvailable() {
+        return abilityAvailable;
+    }
+
+    public void setAbilityAvailable(boolean abilityAvailable) {
+        this.abilityAvailable = abilityAvailable;
+    }
+
     public void increaseLevel() {
         level += 1;
     }
@@ -74,8 +85,6 @@ public abstract class GameCharacter implements Ability {
     }
 
     public void heal(int value) {
-
         health += value;
-
     }
 }

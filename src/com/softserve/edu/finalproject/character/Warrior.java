@@ -13,9 +13,9 @@ public class Warrior extends GameCharacter implements Ability {
     }
 
     @Override
-    public boolean useAbility(Enemy target) {
+    public void useAbility(Enemy target) {
         this.attack(target, 40);
-        return true;
+        setAbilityAvailable(!isAbilityAvailable());
     }
 
     @Override

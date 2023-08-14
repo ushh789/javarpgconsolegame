@@ -12,10 +12,7 @@ import static com.softserve.edu.finalproject.DungeonRunner.player;
 public class KeyEventsHandler implements Runnable {
     private Windows currentWindow = Windows.MAIN;
     private String tempName = null;
-
-    private boolean usedAbility = false;
-
-    private FightEvent fe;
+    private FightEvents fe;
 
     @Override
     public void run() {
@@ -66,9 +63,11 @@ public class KeyEventsHandler implements Runnable {
                 case "3" -> player = new Rogue(tempName, Characters.ROGUE);
                 case "4" -> player = new Warrior(tempName, Characters.WARRIOR);
             }
-            GameEvents.clearCLI();
-            GameWindows.characterPreviewWindow();
-            currentWindow = Windows.CONTINUE;
+            if(player != null) {
+                GameEvents.clearCLI();
+                GameWindows.characterPreviewWindow();
+                currentWindow = Windows.CONTINUE;
+            }
         } else if (currentWindow == Windows.CONTINUE) {
             switch (key) {
                 case "1" -> {
@@ -80,7 +79,8 @@ public class KeyEventsHandler implements Runnable {
                         System.out.println(GameConstants.TEXT_COLOR_RED + GameConstants.FIGHT + GameConstants.RESET);
                         System.out.println(GameConstants.TEXT_COLOR_CYAN + GameConstants.ITALIC + enemy + GameConstants.RESET);
                         currentWindow = Windows.CONTINUE_FIGHT;
-                        GameWindows.continueWindow(); //
+                        player.setAbilityAvailable(!player.isAbilityAvailable());
+                        GameWindows.continueWindow();
                     }
                 }
                 case "2" -> GameEvents.quit();
@@ -89,8 +89,9 @@ public class KeyEventsHandler implements Runnable {
         } else if (currentWindow == Windows.CONTINUE_FIGHT) {
             switch (key) {
                 case "1" -> {
-                    if(enemy.getHealth() <= 0) {
+                    if (enemy.getHealth() <= 0) {
                         GameWindows.winFightWindow();
+                        player.setMana(player.getMana() + 100);
                         currentWindow = Windows.CONTINUE;
                         GameWindows.continueWindow();
                         break;
@@ -101,7 +102,7 @@ public class KeyEventsHandler implements Runnable {
                         break;
                     }
 
-                    fe = new FightEvent(player, enemy);
+                    fe = new FightEvents(player, enemy);
                     GameWindows.startFightStageWindow();
                     fe.fightOptions();
                     GameWindows.endFightStageWindow();
@@ -109,8 +110,7 @@ public class KeyEventsHandler implements Runnable {
                 }
                 case "2" -> GameEvents.quit();
             }
-        } else if(currentWindow == Windows.FIGHT) {
-            usedAbility = false;
+        } else if (currentWindow == Windows.FIGHT) {
             switch (key) {
                 case "1" -> {
                     fe.attackOption();
@@ -125,9 +125,8 @@ public class KeyEventsHandler implements Runnable {
                     currentWindow = Windows.CONTINUE_FIGHT;
                 }
                 case "3" -> {
-                    if(player.getMana() >= 100 && !usedAbility) {
+                    if (fe.abilityOption()) {
                         GameWindows.continueFightStageWindow(fe);
-                        usedAbility = player.useAbility(enemy);
                         GameWindows.continueWindow();
                         currentWindow = Windows.CONTINUE_FIGHT;
                     }

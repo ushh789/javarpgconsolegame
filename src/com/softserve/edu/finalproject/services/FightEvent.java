@@ -63,15 +63,9 @@ public class FightEvent {
 
     public void attackOption() {
         switch (randomAttackAction) {
-            case 0 -> {
-                player.attack(enemy, player.getDamage());
-            }
-            case 1 -> {
-                player.stealDamage(enemy, randomDamageStealingValue);
-            }
-            case 2 -> {
-                player.increaseDamage(randomIncreaseDamage);
-            }
+            case 0 -> player.attack(enemy, player.getDamage());
+            case 1 -> player.stealDamage(enemy, randomDamageStealingValue);
+            case 2 -> player.increaseDamage(randomIncreaseDamage);
         }
     }
 

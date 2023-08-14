@@ -2,6 +2,7 @@ package com.softserve.edu.finalproject.constants;
 
 
 import com.softserve.edu.finalproject.character.Characters;
+import com.softserve.edu.finalproject.services.FightEvent;
 
 import static com.softserve.edu.finalproject.DungeonRunner.enemy;
 import static com.softserve.edu.finalproject.DungeonRunner.player;
@@ -71,7 +72,7 @@ public class GameWindows {
         System.out.println(gameStats);
     }
 
-    public static void continueFightStageWindow() {
+    public static void continueFightStageWindow(FightEvent fe) {
         StringBuilder gameStats = new StringBuilder();
         gameStats.append(GameConstants.TEXT_COLOR_CYAN);
         gameStats.append(GameConstants.BOLD);
@@ -80,8 +81,12 @@ public class GameWindows {
         gameStats.append(GameConstants.RESET);
         gameStats.append(GameConstants.TEXT_COLOR_CYAN);
         gameStats.append(GameConstants.ITALIC);
-        gameStats.append(String.format("%-10s%-20s%-10s%-20s%n", "[HEALTH] ", player.getHealth(), "[HEALTH]", enemy.getHealth()));
-        gameStats.append(String.format("%-10s%-20s%-10s%-20s%n", "[DAMAGE]", player.getDamage(), "[DAMAGE]", enemy.getDamage()));
+        gameStats.append(String.format("%-10s%-20s%-10s%-20s%n", "[HEALTH] ",
+                fe.getPlayerOldHealth() + " -> " + player.getHealth(),
+                "[HEALTH]", fe.getEnemyOldHealth() + " -> " + enemy.getHealth()));
+        gameStats.append(String.format("%-10s%-20s%-10s%-20s%n", "[DAMAGE]",
+                fe.getPlayerOldDamage() + " -> " + player.getDamage(),
+                "[DAMAGE]", fe.getEnemyOldDamage() + " -> " + enemy.getDamage()));
         gameStats.append(String.format("%-10s%-10s%n", "[MANA]", player.getMana()));
 
         gameStats.append(GameConstants.RESET);

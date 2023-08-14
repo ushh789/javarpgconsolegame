@@ -13,6 +13,10 @@ public class KeyEventsHandler implements Runnable {
     private Windows currentWindow = Windows.MAIN;
     private String tempName = null;
 
+    private boolean usedAbility = false;
+
+    private FightEvent fe;
+
     @Override
     public void run() {
         while (true) {
@@ -75,26 +79,60 @@ public class KeyEventsHandler implements Runnable {
                     } else if (tempRoom == Windows.FIGHT) {
                         System.out.println(GameConstants.TEXT_COLOR_RED + GameConstants.FIGHT + GameConstants.RESET);
                         System.out.println(GameConstants.TEXT_COLOR_CYAN + GameConstants.ITALIC + enemy + GameConstants.RESET);
-                        currentWindow = Windows.FIGHT;
-                        GameWindows.continueWindow();
+                        currentWindow = Windows.CONTINUE_FIGHT;
+                        GameWindows.continueWindow(); //
                     }
                 }
                 case "2" -> GameEvents.quit();
             }
 
-        } else if (currentWindow == Windows.FIGHT) {
-            FightEvent fe = new FightEvent(player, enemy);
-            GameWindows.startFightStageWindow();
-            fe.fight();
-            GameWindows.endFightStageWindow();
-
+        } else if (currentWindow == Windows.CONTINUE_FIGHT) {
             switch (key) {
                 case "1" -> {
-                    fe.attack();
+                    if(enemy.getHealth() <= 0) {
+                        GameWindows.winFightWindow();
+                        currentWindow = Windows.CONTINUE;
+                        GameWindows.continueWindow();
+                        break;
+                    } else if (player.getHealth() <= 0) {
+                        GameWindows.lostFightWindow();
+                        currentWindow = Windows.CONTINUE;
+                        GameEvents.quit();
+                        break;
+                    }
+
+                    fe = new FightEvent(player, enemy);
+                    GameWindows.startFightStageWindow();
+                    fe.fightOptions();
+                    GameWindows.endFightStageWindow();
+                    currentWindow = Windows.FIGHT;
+                }
+                case "2" -> GameEvents.quit();
+            }
+        } else if(currentWindow == Windows.FIGHT) {
+            usedAbility = false;
+            switch (key) {
+                case "1" -> {
+                    fe.attackOption();
+                    GameWindows.continueFightStageWindow(fe);
+                    GameWindows.continueWindow();
+                    currentWindow = Windows.CONTINUE_FIGHT;
                 }
                 case "2" -> {
-                    fe.heal();
+                    fe.healOption();
+                    GameWindows.continueFightStageWindow(fe);
+                    GameWindows.continueWindow();
+                    currentWindow = Windows.CONTINUE_FIGHT;
                 }
+                case "3" -> {
+                    if(player.getMana() >= 100 && !usedAbility) {
+                        GameWindows.continueFightStageWindow(fe);
+                        usedAbility = player.useAbility(enemy);
+                        GameWindows.continueWindow();
+                        currentWindow = Windows.CONTINUE_FIGHT;
+                    }
+                }
+                case "4" -> GameEvents.quit();
             }
         }
     }

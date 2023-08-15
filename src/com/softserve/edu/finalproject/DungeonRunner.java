@@ -22,6 +22,5 @@ public class DungeonRunner {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-
     }
 }

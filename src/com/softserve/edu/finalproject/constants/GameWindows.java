@@ -15,7 +15,7 @@ public class GameWindows {
         System.out.println(GameConstants.BOLD + "Select an option:" + GameConstants.RESET);
         System.out.println("[1] New game");
         System.out.println("[2] Load game");
-        System.out.println("[3] Save and quit...\n");
+        System.out.println("[3] Save and quit\n");
         System.out.println(GameConstants.ITALIC + "Enter \"q\" in any moment to quit from game without saving progress." + GameConstants.RESET);
     }
 
@@ -24,7 +24,7 @@ public class GameWindows {
         System.out.println(GameConstants.BOLD + "Select an option:" + GameConstants.RESET);
         System.out.println("[1] Load game #1");
         System.out.println("[2] Load game #2");
-        System.out.println("[3] Save and quit...\n");
+        System.out.println("[3] Save and quit\n");
     }
 
     public static String startGame() {
@@ -96,7 +96,7 @@ public class GameWindows {
 
     public static void endFightStageWindow() {
         System.out.println("[3] Use ability");
-        System.out.println("[4] Exit");
+        System.out.println("[4] Save and quit");
     }
 
     public static void lostFightWindow() {

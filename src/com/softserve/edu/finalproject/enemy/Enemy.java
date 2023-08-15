@@ -2,7 +2,10 @@ package com.softserve.edu.finalproject.enemy;
 
 import com.softserve.edu.finalproject.character.GameCharacter;
 
-public class Enemy {
+import java.io.Serializable;
+import java.util.Objects;
+
+public class Enemy implements Serializable {
     private String name;
     private int health;
     private int damage;
@@ -61,5 +64,17 @@ public class Enemy {
     @Override
     public String toString() {
         return "You are fighting against: ";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Enemy enemy)) return false;
+        return health == enemy.health && damage == enemy.damage && Objects.equals(name, enemy.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, health, damage);
     }
 }

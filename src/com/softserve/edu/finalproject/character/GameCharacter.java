@@ -2,7 +2,10 @@ package com.softserve.edu.finalproject.character;
 
 import com.softserve.edu.finalproject.enemy.Enemy;
 
-public abstract class GameCharacter implements Ability {
+import java.io.Serializable;
+import java.util.Objects;
+
+public abstract class GameCharacter implements Ability, Serializable {
     private String name;
     private int level;
     private int damage;
@@ -87,5 +90,17 @@ public abstract class GameCharacter implements Ability {
 
     public void heal(int value) {
         health += value;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof GameCharacter that)) return false;
+        return level == that.level && damage == that.damage && health == that.health && mana == that.mana && abilityAvailable == that.abilityAvailable && Objects.equals(name, that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, level, damage, health, mana, abilityAvailable);
     }
 }

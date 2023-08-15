@@ -5,6 +5,7 @@ import com.softserve.edu.finalproject.constants.*;
 
 import java.io.IOException;
 import java.util.Objects;
+import java.util.Optional;
 
 import static com.softserve.edu.finalproject.DungeonRunner.enemy;
 import static com.softserve.edu.finalproject.DungeonRunner.player;
@@ -12,6 +13,7 @@ import static com.softserve.edu.finalproject.DungeonRunner.player;
 public class KeyEventsHandler implements Runnable {
     private Windows currentWindow = Windows.MAIN;
     private String tempName = null;
+    private String currentPath = null;
     private FightEvents fe;
 
     @Override
@@ -40,7 +42,11 @@ public class KeyEventsHandler implements Runnable {
                     currentWindow = Windows.LOAD;
                     GameWindows.loadWindow();
                 }
-                case "3" -> GameEvents.quit();
+                case "3" -> {
+                    SaveEvents saveEvents = new SaveEvents();
+                    System.out.println(saveEvents.save(Optional.empty(), player, enemy, this));
+                    GameEvents.quit();
+                }
             }
         } else if (currentWindow == Windows.LOAD) {
             switch (key) {
@@ -54,7 +60,11 @@ public class KeyEventsHandler implements Runnable {
                     currentWindow = Windows.START;
                     tempName = GameWindows.startGame();
                 }
-                case "3" -> GameEvents.quit();
+                case "3" -> {
+                    SaveEvents saveEvents = new SaveEvents();
+                    System.out.println(saveEvents.save(Optional.empty(), player, enemy, this));
+                    GameEvents.quit();
+                }
             }
         } else if (currentWindow == Windows.START) {
             switch (key) {
@@ -83,7 +93,11 @@ public class KeyEventsHandler implements Runnable {
                         GameWindows.continueWindow();
                     }
                 }
-                case "2" -> GameEvents.quit();
+                case "2" -> {
+                    SaveEvents saveEvents = new SaveEvents();
+                    System.out.println(saveEvents.save(Optional.empty(), player, enemy, this));
+                    GameEvents.quit();
+                }
             }
 
         } else if (currentWindow == Windows.CONTINUE_FIGHT) {
@@ -100,6 +114,8 @@ public class KeyEventsHandler implements Runnable {
                     } else if (player.getHealth() <= 0) {
                         GameWindows.lostFightWindow();
                         currentWindow = Windows.CONTINUE;
+                        SaveEvents saveEvents = new SaveEvents();
+                        saveEvents.delete(currentPath);
                         GameEvents.quit();
                         break;
                     }
@@ -110,7 +126,11 @@ public class KeyEventsHandler implements Runnable {
                     GameWindows.endFightStageWindow();
                     currentWindow = Windows.FIGHT;
                 }
-                case "2" -> GameEvents.quit();
+                case "2" -> {
+                    SaveEvents saveEvents = new SaveEvents();
+                    System.out.println(saveEvents.save(Optional.empty(), player, enemy, this));
+                    GameEvents.quit();
+                }
             }
         } else if (currentWindow == Windows.FIGHT) {
             switch (key) {
@@ -136,8 +156,20 @@ public class KeyEventsHandler implements Runnable {
                         currentWindow = Windows.CONTINUE_FIGHT;
                     }
                 }
-                case "4" -> GameEvents.quit();
+                case "4" -> {
+                    SaveEvents saveEvents = new SaveEvents();
+                    System.out.println(saveEvents.save(Optional.empty(), player, enemy, this));
+                    GameEvents.quit();
+                }
             }
         }
+    }
+
+    public Windows getCurrentWindow() {
+        return currentWindow;
+    }
+
+    public void setCurrentPath(String currentPath) {
+        this.currentPath = currentPath;
     }
 }

@@ -1,0 +1,14 @@
+[{
+  "characterType": "WARRIOR",
+  "name": "TESTforLOAD",
+  "level": 1,
+  "damage": 20,
+  "health": 55,
+  "mana": 50,
+  "abilityAvailable": true
+},{
+  "enemyType": "SKELETON",
+  "name": "Gravemourn",
+  "health": -4,
+  "damage": 12
+},"CONTINUE"]

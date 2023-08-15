@@ -1,0 +1,14 @@
+[{
+  "characterType": "PRIEST",
+  "name": "1",
+  "level": 3,
+  "damage": 14,
+  "health": 110,
+  "mana": 200,
+  "abilityAvailable": true
+},{
+  "enemyType": "DRAGON",
+  "name": "Nyxondra",
+  "health": 62,
+  "damage": 22
+},"CONTINUE_FIGHT"]

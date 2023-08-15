@@ -1,0 +1,14 @@
+[{
+  "characterType": "MAGE",
+  "name": "lask",
+  "level": 5,
+  "damage": 47,
+  "health": 81,
+  "mana": 450,
+  "abilityAvailable": false
+},{
+  "enemyType": "GOBLIN",
+  "name": "Gimli",
+  "health": 65,
+  "damage": 25
+},"FIGHT"]

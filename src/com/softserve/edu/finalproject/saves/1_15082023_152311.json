@@ -1,0 +1,14 @@
+[{
+  "characterType": "PRIEST",
+  "name": "1",
+  "level": 1,
+  "damage": 10,
+  "health": 123,
+  "mana": 100,
+  "abilityAvailable": true
+},{
+  "enemyType": "GOBLIN",
+  "name": "Gruk",
+  "health": 52,
+  "damage": 14
+},"CONTINUE_FIGHT"]

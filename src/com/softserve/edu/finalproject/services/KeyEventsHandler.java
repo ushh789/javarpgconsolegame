@@ -3,18 +3,21 @@ package com.softserve.edu.finalproject.services;
 import com.softserve.edu.finalproject.character.*;
 import com.softserve.edu.finalproject.constants.*;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.Optional;
 
 import static com.softserve.edu.finalproject.DungeonRunner.enemy;
 import static com.softserve.edu.finalproject.DungeonRunner.player;
+import static com.softserve.edu.finalproject.constants.GameWindows.characterPreviewWindow;
 
 public class KeyEventsHandler implements Runnable {
     private Windows currentWindow = Windows.MAIN;
     private String tempName = null;
     private String currentPath = null;
     private FightEvents fe;
+    private SaveEvents se;
 
     @Override
     public void run() {
@@ -49,23 +52,21 @@ public class KeyEventsHandler implements Runnable {
                 }
             }
         } else if (currentWindow == Windows.LOAD) {
-            switch (key) {
-                case "1" -> {
-                    GameEvents.clearCLI();
-                    currentWindow = Windows.START;
-                    tempName = GameWindows.startGame();
+                se = new SaveEvents();
+                File[] saves = se.loadOptions();
+                File chosenSave = saves[Integer.parseInt(key)];
+
+                if (Integer.parseInt(key) >= 0 && Integer.parseInt(key) < saves.length) {
+                    player = se.loadPlayer(chosenSave);
+                    characterPreviewWindow();
+                    enemy = se.loadEnemy(chosenSave);
+                    currentWindow = Windows.CONTINUE_FIGHT;
+                    GameWindows.startFightStageWindow();
+                } else {
+                    currentWindow = Windows.LOAD;
+                    GameWindows.loadWindow();
                 }
-                case "2" -> {
-                    GameEvents.clearCLI();
-                    currentWindow = Windows.START;
-                    tempName = GameWindows.startGame();
-                }
-                case "3" -> {
-                    SaveEvents saveEvents = new SaveEvents();
-                    System.out.println(saveEvents.save(Optional.empty(), player, enemy, this));
-                    GameEvents.quit();
-                }
-            }
+
         } else if (currentWindow == Windows.START) {
             switch (key) {
                 case "1" -> player = new Mage(tempName, Characters.MAGE);
@@ -76,6 +77,7 @@ public class KeyEventsHandler implements Runnable {
             if(player != null) {
                 GameEvents.clearCLI();
                 GameWindows.characterPreviewWindow();
+                GameWindows.continueWindow();
                 currentWindow = Windows.CONTINUE;
             }
         } else if (currentWindow == Windows.CONTINUE) {

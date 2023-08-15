@@ -1,0 +1,14 @@
+[{
+  "characterType": "MAGE",
+  "name": "1",
+  "level": 0,
+  "damage": 16,
+  "health": 120,
+  "mana": 0,
+  "abilityAvailable": true
+},{
+  "enemyType": "SKELETON",
+  "name": "Bonechill",
+  "health": 60,
+  "damage": 8
+},"CONTINUE_FIGHT"]

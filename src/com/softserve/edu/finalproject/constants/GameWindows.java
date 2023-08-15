@@ -3,12 +3,14 @@ package com.softserve.edu.finalproject.constants;
 
 import com.softserve.edu.finalproject.character.Characters;
 import com.softserve.edu.finalproject.services.FightEvents;
+import com.softserve.edu.finalproject.services.SaveEvents;
 
 import static com.softserve.edu.finalproject.DungeonRunner.enemy;
 import static com.softserve.edu.finalproject.DungeonRunner.player;
 
 public class GameWindows {
     public static String name;
+    private static SaveEvents se;
 
     public static void mainWindow() {
         System.out.println(GameConstants.TEXT_COLOR_CYAN + GameConstants.GAME_TITLE + GameConstants.RESET);
@@ -21,10 +23,10 @@ public class GameWindows {
 
     public static void loadWindow() {
         System.out.println(GameConstants.TEXT_COLOR_CYAN + GameConstants.LOAD_TITLE + GameConstants.RESET);
-        System.out.println(GameConstants.BOLD + "Select an option:" + GameConstants.RESET);
-        System.out.println("[1] Load game #1");
-        System.out.println("[2] Load game #2");
-        System.out.println("[3] Save and quit\n");
+        System.out.println(GameConstants.BOLD + "Select save:" + GameConstants.RESET);
+        se = new SaveEvents();
+        se.loadOptions();
+        System.out.println("[q] Quit\n");
     }
 
     public static String startGame() {
@@ -48,10 +50,9 @@ public class GameWindows {
 
     public static void characterPreviewWindow() {
         System.out.println(GameConstants.TEXT_COLOR_CYAN + player + "\n" + GameConstants.RESET);
-
-        System.out.println(GameConstants.BOLD + "Select an option:" + GameConstants.RESET);
-        System.out.println("[1] Continue");
-        System.out.println("[2] Save and quit");
+//        System.out.println(GameConstants.BOLD + "Select an option:" + GameConstants.RESET);
+//        System.out.println("[1] Continue");
+//        System.out.println("[2] Save and quit");
     }
 
     public static void startFightStageWindow() {
@@ -106,10 +107,7 @@ public class GameWindows {
     public static void winFightWindow() {
         System.out.println(GameConstants.TEXT_COLOR_GREEN + GameConstants.WIN_TITLE + GameConstants.RESET);
 //        System.out.println(GameConstants.TEXT_COLOR_CYAN + player. + GameConstants.RESET);
-
-
     }
-
     public static void loadGame() {
         System.out.println("...load game...");
     }

@@ -59,6 +59,7 @@ public class KeyEventsHandler implements Runnable {
                     if(enemy!=null) {
                         currentWindow = Windows.CONTINUE_FIGHT;
                         GameWindows.startFightStageWindow();
+                        GameWindows.continueFightStageWindow(new FightEvents(player, enemy));
                     }
                     else {
                         GameWindows.continueWindow();

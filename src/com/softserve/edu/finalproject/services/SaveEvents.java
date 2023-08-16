@@ -3,6 +3,7 @@ package com.softserve.edu.finalproject.services;
 import com.google.gson.*;
 import com.google.gson.GsonBuilder;
 import com.softserve.edu.finalproject.character.*;
+import com.softserve.edu.finalproject.constants.GameConstants;
 import com.softserve.edu.finalproject.enemy.*;
 
 import java.io.*;
@@ -136,35 +137,35 @@ public class SaveEvents {
                     JsonObject jsonObject = element.getAsJsonObject();
                     if (jsonObject.has("enemyType") && jsonObject.get("enemyType").getAsString().equals("GOBLIN")) {
                         Enemy enemy = new Gson().fromJson(jsonObject, Goblin.class);
-                        System.out.println(enemy);
+                        System.out.println(GameConstants.TEXT_COLOR_RED + enemy + GameConstants.RESET + "\n");
                         return enemy;
                     } else if (jsonObject.has("enemyType") && jsonObject.get("enemyType").getAsString().equals("SKELETON")) {
                         Enemy enemy = new Gson().fromJson(jsonObject, Skeleton.class);
-                        System.out.println(enemy);
+                        System.out.println(GameConstants.TEXT_COLOR_RED + enemy + GameConstants.RESET + "\n");
                         return enemy;
                     } else if (jsonObject.has("enemyType") && jsonObject.get("enemyType").getAsString().equals("DRAGON")) {
                         Enemy enemy = new Gson().fromJson(jsonObject, Dragon.class);
-                        System.out.println(enemy);
+                        System.out.println(GameConstants.TEXT_COLOR_RED + enemy + GameConstants.RESET + "\n");
                         return enemy;
                     } else if (jsonObject.has("enemyType") && jsonObject.get("enemyType").getAsString().equals("HUMAN")) {
                         Enemy enemy = new Gson().fromJson(jsonObject, Human.class);
-                        System.out.println(enemy);
+                        System.out.println(GameConstants.TEXT_COLOR_RED + enemy + GameConstants.RESET + "\n");
                         return enemy;
                     } else if (jsonObject.has("enemyType") && jsonObject.get("enemyType").getAsString().equals("ELF")) {
                         Enemy enemy = new Gson().fromJson(jsonObject, Elf.class);
-                        System.out.println(enemy);
+                        System.out.println(GameConstants.TEXT_COLOR_RED + enemy + GameConstants.RESET + "\n");
                         return enemy;
                     } else if (jsonObject.has("enemyType") && jsonObject.get("enemyType").getAsString().equals("DWARF")) {
                         Enemy enemy = new Gson().fromJson(jsonObject, Dwarf.class);
-                        System.out.println(enemy);
+                        System.out.println(GameConstants.TEXT_COLOR_RED + enemy + GameConstants.RESET + "\n");
                         return enemy;
                     } else if (jsonObject.has("enemyType") && jsonObject.get("enemyType").getAsString().equals("ORK")) {
                         Enemy enemy = new Gson().fromJson(jsonObject, Ork.class);
-                        System.out.println(enemy);
+                        System.out.println(GameConstants.TEXT_COLOR_RED + enemy + GameConstants.RESET + "\n");
                         return enemy;
                     } else if (jsonObject.has("enemyType") && jsonObject.get("enemyType").getAsString().equals("UNDEAD")) {
                         Enemy enemy = new Gson().fromJson(jsonObject, Undead.class);
-                        System.out.println(enemy);
+                        System.out.println(GameConstants.TEXT_COLOR_RED + enemy + GameConstants.RESET + "\n");
                         return enemy;
                     }
                 }

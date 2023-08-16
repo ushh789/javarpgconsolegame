@@ -11,8 +11,6 @@ public abstract class Area {
         this.locationName = locationName;
     }
 
-    public abstract void explore(Character character);
-
     @Override
     public String toString() {
         return locationName;

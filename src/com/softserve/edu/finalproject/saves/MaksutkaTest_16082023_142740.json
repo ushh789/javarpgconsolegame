@@ -1,0 +1,14 @@
+[{
+  "characterType": "PRIEST",
+  "name": "MaksutkaTest",
+  "level": 0,
+  "damage": 10,
+  "health": 120,
+  "mana": 0,
+  "abilityAvailable": true
+},{
+  "enemyType": "DRAGON",
+  "name": "Vermithrax",
+  "health": 40,
+  "damage": 10
+},"CONTINUE_FIGHT"]

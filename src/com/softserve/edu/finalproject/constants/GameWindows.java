@@ -19,7 +19,6 @@ public class GameWindows {
         System.out.println(GameConstants.BOLD + "Select an option:" + GameConstants.RESET);
         System.out.println("[1] New game");
         System.out.println("[2] Load game");
-//        System.out.println("[3] Save and quit\n");
         System.out.println(GameConstants.ITALIC + "\nEnter \"q\" in any moment to quit from game without saving progress." + GameConstants.RESET);
     }
 
@@ -53,9 +52,6 @@ public class GameWindows {
 
     public static void characterPreviewWindow() {
         System.out.println(GameConstants.TEXT_COLOR_CYAN + player + "\n" + GameConstants.RESET);
-//        System.out.println(GameConstants.BOLD + "Select an option:" + GameConstants.RESET);
-//        System.out.println("[1] Continue");
-//        System.out.println("[2] Save and quit");
     }
 
     public static void startFightStageWindow() {

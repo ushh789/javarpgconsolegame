@@ -12,11 +12,6 @@ public class Cave extends Area{
     }
 
     @Override
-    public void explore(Character character) {
-
-    }
-
-    @Override
     public String toString() {
         return "You are in the Cave " + super.toString();
     }

@@ -6,30 +6,29 @@ import com.softserve.edu.finalproject.enemy.Enemy;
 import java.util.Random;
 
 public class FightEvents {
-    private int playerOldHealth;
-    private int enemyOldHealth;
-    private int playerOldDamage;
-    private int enemyOldDamage;
-    private int randomAttackAction;
-    private int randomHealAction;
-    private Random random;
-    private int randomIncreaseDamage;
-    private int randomDamageStealingValue;
+    private final int playerOldHealth;
+    private final int enemyOldHealth;
+    private final int playerOldDamage;
+    private final int enemyOldDamage;
+    private final int randomAttackAction;
+    private final int randomHealAction;
+    private final int randomIncreaseDamage;
+    private final int randomDamageStealingValue;
     private int damageStealingValue;
-    private int randomHeal;
-    private int randomHealthStealingValue;
+    private final int randomHeal;
+    private final int randomHealthStealingValue;
     private int healthStealingValue;
-    private int damageBotStealingValue;
-    private int randomBotIncreaseDamage;
-    private int healthBotStealingValue;
-    private int randomBotHeal;
-    private int botChoice;
+    private final int damageBotStealingValue;
+    private final int randomBotIncreaseDamage;
+    private final int healthBotStealingValue;
+    private final int randomBotHeal;
+    private final int botChoice;
 
-    private GameCharacter player;
-    private Enemy enemy;
+    private final GameCharacter player;
+    private final Enemy enemy;
 
     public FightEvents(GameCharacter player, Enemy target) {
-        random = new Random();
+        Random random = new Random();
         this.player = player;
         this.enemy = target;
         randomAttackAction = random.nextInt(3);

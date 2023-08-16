@@ -1,0 +1,14 @@
+[{
+  "characterType": "PRIEST",
+  "name": "pe_maksutka",
+  "level": 0,
+  "damage": 26,
+  "health": 81,
+  "mana": 50,
+  "abilityAvailable": false
+},{
+  "enemyType": "SKELETON",
+  "name": "Ghoulbone",
+  "health": 60,
+  "damage": 5
+},"CONTINUE_FIGHT"]

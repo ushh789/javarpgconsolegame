@@ -18,6 +18,7 @@ public class KeyEventsHandler implements Runnable {
     private String currentPath = null;
     private FightEvents fe;
     private SaveEvents se;
+    private File chosenSave;
 
     @Override
     public void run() {
@@ -51,25 +52,41 @@ public class KeyEventsHandler implements Runnable {
             File[] saves = se.loadOptions();
             try {
                 GameWindows.loadWindow();
-                File chosenSave = saves[Integer.parseInt(key)];
+                chosenSave = saves[Integer.parseInt(key)];
                 if (Integer.parseInt(key) >= 0 && Integer.parseInt(key) < saves.length) {
                     player = se.loadPlayer(chosenSave);
                     characterPreviewWindow();
                     enemy = se.loadEnemy(chosenSave);
-                    if(enemy!=null) {
-                        currentWindow = Windows.CONTINUE_FIGHT;
-                        GameWindows.startFightStageWindow();
-                        GameWindows.continueFightStageWindow(new FightEvents(player, enemy));
-                    }
-                    else {
-                        GameWindows.continueWindow();
-                        currentWindow = Windows.CONTINUE;
-                    }
+                    currentWindow = se.loadCurrentWindow(chosenSave);
+                }
+
+//                if (enemy != null && currentWindow == Windows.CONTINUE) {
+//                    currentWindow = Windows.CONTINUE_FIGHT;
+//                    //GameWindows.startFightStageWindow();
+//                    GameWindows.continueFightStageWindow(fe);
+//                } else {
+//                    GameWindows.continueWindow();
+//                    currentWindow = Windows.CONTINUE;
+//                }
+
+                if (currentWindow == Windows.CONTINUE) {
+                    GameWindows.continueWindow();
+                } else if (currentWindow == Windows.FIGHT) {
+                    System.out.println(GameConstants.TEXT_COLOR_RED + GameConstants.FIGHT + GameConstants.RESET);
+                    fe = new FightEvents(player, enemy);
+                    GameWindows.startFightStageWindow();
+                    fe.fightOptions();
+                    GameWindows.endFightStageWindow();
+                } else if (currentWindow == Windows.CONTINUE_FIGHT) {
+                    System.out.println(GameConstants.TEXT_COLOR_RED + GameConstants.FIGHT + GameConstants.RESET);
+                    fe = new FightEvents(player, enemy);
+                    GameWindows.continueFightStageWindow(fe);
+                    GameWindows.continueWindow();
                 }
             } catch (NumberFormatException e) {
                 System.err.println("There isn't any save with that number! Try again.");
                 currentWindow = Windows.LOAD;
-            } catch (ArrayIndexOutOfBoundsException e){
+            } catch (ArrayIndexOutOfBoundsException e) {
                 System.err.println("There isn't any save with that number! Try again.");
                 currentWindow = Windows.LOAD;
             }
@@ -80,7 +97,7 @@ public class KeyEventsHandler implements Runnable {
                 case "3" -> player = new Rogue(tempName, Characters.ROGUE);
                 case "4" -> player = new Warrior(tempName, Characters.WARRIOR);
             }
-            if(player != null) {
+            if (player != null) {
                 GameEvents.clearCLI();
                 GameWindows.characterPreviewWindow();
                 GameWindows.continueWindow();
@@ -103,7 +120,8 @@ public class KeyEventsHandler implements Runnable {
                 }
                 case "2" -> {
                     SaveEvents saveEvents = new SaveEvents();
-                    saveEvents.save(Optional.empty(), player, enemy, this);
+                    if(chosenSave != null) saveEvents.delete(chosenSave.getName());
+                    saveEvents.save(Optional.empty(), player, enemy, this, currentWindow);
                     GameEvents.quit();
                 }
             }
@@ -136,7 +154,8 @@ public class KeyEventsHandler implements Runnable {
                 }
                 case "2" -> {
                     SaveEvents saveEvents = new SaveEvents();
-                    saveEvents.save(Optional.empty(), player, enemy, this);
+                    if(chosenSave != null) saveEvents.delete(chosenSave.getName());
+                    saveEvents.save(Optional.empty(), player, enemy, this, currentWindow);
                     GameEvents.quit();
                 }
             }
@@ -166,15 +185,12 @@ public class KeyEventsHandler implements Runnable {
                 }
                 case "4" -> {
                     SaveEvents saveEvents = new SaveEvents();
-                    saveEvents.save(Optional.empty(), player, enemy, this);
+                    if(chosenSave != null) saveEvents.delete(chosenSave.getName());
+                    saveEvents.save(Optional.empty(), player, enemy, this, currentWindow);
                     GameEvents.quit();
                 }
             }
         }
-    }
-
-    public Windows getCurrentWindow() {
-        return currentWindow;
     }
 
     public void setCurrentPath(String currentPath) {

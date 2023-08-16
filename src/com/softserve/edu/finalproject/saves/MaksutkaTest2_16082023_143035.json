@@ -1,0 +1,9 @@
+[{
+  "characterType": "PRIEST",
+  "name": "MaksutkaTest2",
+  "level": 0,
+  "damage": 10,
+  "health": 120,
+  "mana": 0,
+  "abilityAvailable": true
+},{"windowsName": "CONTINUE"}]

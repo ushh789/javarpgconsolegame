@@ -4,6 +4,7 @@ import com.google.gson.*;
 import com.google.gson.GsonBuilder;
 import com.softserve.edu.finalproject.character.*;
 import com.softserve.edu.finalproject.constants.GameConstants;
+import com.softserve.edu.finalproject.constants.Windows;
 import com.softserve.edu.finalproject.enemy.*;
 
 import java.io.*;
@@ -16,15 +17,14 @@ import java.util.Optional;
 import java.util.regex.*;
 
 
-
 public class SaveEvents {
-    private Gson gson;
+    private final Gson gson;
 
     public SaveEvents() {
         gson = new GsonBuilder().setPrettyPrinting().create();
     }
 
-    public boolean save(Optional<String> path, GameCharacter player, Enemy enemy, KeyEventsHandler keyEventsHandler) {
+    public boolean save(Optional<String> path, GameCharacter player, Enemy enemy, KeyEventsHandler keyEventsHandler, Windows currentWindow) {
 
         try {
             String filePath = path.orElseGet(() -> {
@@ -52,10 +52,13 @@ public class SaveEvents {
                 }
 
                 if (player != null) {
-                    bw.write(',');
-                    gson.toJson(keyEventsHandler.getCurrentWindow(), bw);
-                } else gson.toJson(keyEventsHandler.getCurrentWindow(), bw);
-                bw.write(']');
+                    bw.write(", {\"windowsName\": ");
+                    gson.toJson(currentWindow.getWindowsName(), bw);
+                } else {
+                    bw.write("{\"windowsName\": ");
+                    gson.toJson(currentWindow.getWindowsName(), bw);
+                }
+                bw.write("}]");
 
                 return true;
             } catch (Exception e) {
@@ -82,7 +85,7 @@ public class SaveEvents {
     }
 
     public void printSaves(File[] files) {
-    String path = "src/com/softserve/edu/finalproject/saves/";
+        String path = "src/com/softserve/edu/finalproject/saves/";
         Pattern p = Pattern.compile("([\\d\\w]+_[\\d]{2}[\\d]{2}[\\d]{4})");
         for (int i = 0; i < files.length; i++) {
             File file = files[i];
@@ -108,17 +111,13 @@ public class SaveEvents {
                 if (element.isJsonObject()) {
                     JsonObject jsonObject = element.getAsJsonObject();
                     if (jsonObject.has("characterType") && jsonObject.get("characterType").getAsString().equals("MAGE")) {
-                        GameCharacter player = new Gson().fromJson(jsonObject, Mage.class);
-                        return player;
+                        return new Gson().fromJson(jsonObject, Mage.class);
                     } else if (jsonObject.has("characterType") && jsonObject.get("characterType").getAsString().equals("WARRIOR")) {
-                        GameCharacter player = new Gson().fromJson(jsonObject, Warrior.class);
-                        return player;
+                        return new Gson().fromJson(jsonObject, Warrior.class);
                     } else if (jsonObject.has("characterType") && jsonObject.get("characterType").getAsString().equals("ROGUE")) {
-                        GameCharacter player = new Gson().fromJson(jsonObject, Rogue.class);
-                        return player;
+                        return new Gson().fromJson(jsonObject, Rogue.class);
                     } else if (jsonObject.has("characterType") && jsonObject.get("characterType").getAsString().equals("PRIEST")) {
-                        GameCharacter player = new Gson().fromJson(jsonObject, Priest.class);
-                        return player;
+                        return new Gson().fromJson(jsonObject, Priest.class);
                     }
                 }
             }
@@ -167,6 +166,35 @@ public class SaveEvents {
                         Enemy enemy = new Gson().fromJson(jsonObject, Undead.class);
                         System.out.println(GameConstants.TEXT_COLOR_RED + enemy + GameConstants.RESET + "\n");
                         return enemy;
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Windows loadCurrentWindow(File file) {
+        try (FileReader reader = new FileReader(file)) {
+            JsonParser parser = new JsonParser();
+            JsonArray jsonArray = parser.parse(reader).getAsJsonArray();
+
+            for (JsonElement element : jsonArray) {
+                if (element.isJsonObject()) {
+                    JsonObject jsonObject = element.getAsJsonObject();
+                    if (jsonObject.has("windowsName") && jsonObject.get("windowsName").getAsString().equals("MAIN")) {
+                        return Windows.MAIN;
+                    } else if(jsonObject.has("windowsName") && jsonObject.get("windowsName").getAsString().equals("START")) {
+                        return Windows.START;
+                    } else if(jsonObject.has("windowsName") && jsonObject.get("windowsName").getAsString().equals("LOAD")) {
+                        return Windows.LOAD;
+                    } else if(jsonObject.has("windowsName") && jsonObject.get("windowsName").getAsString().equals("CONTINUE")) {
+                        return Windows.CONTINUE;
+                    } else if(jsonObject.has("windowsName") && jsonObject.get("windowsName").getAsString().equals("CONTINUE_FIGHT")) {
+                        return Windows.CONTINUE_FIGHT;
+                    } else if(jsonObject.has("windowsName") && jsonObject.get("windowsName").getAsString().equals("FIGHT")) {
+                        return Windows.FIGHT;
                     }
                 }
             }

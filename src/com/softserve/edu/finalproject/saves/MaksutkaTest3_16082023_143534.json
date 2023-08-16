@@ -1,0 +1,14 @@
+[{
+  "characterType": "MAGE",
+  "name": "MaksutkaTest3",
+  "level": 1,
+  "damage": 15,
+  "health": 134,
+  "mana": 0,
+  "abilityAvailable": true
+},{
+  "enemyType": "DRAGON",
+  "name": "Emberwing",
+  "health": 45,
+  "damage": 13
+}, {"windowsName": "FIGHT"}]

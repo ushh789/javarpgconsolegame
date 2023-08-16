@@ -1,0 +1,14 @@
+[{
+  "characterType": "WARRIOR",
+  "name": "MaksutkaTest4",
+  "level": 0,
+  "damage": 16,
+  "health": 114,
+  "mana": 0,
+  "abilityAvailable": true
+},{
+  "enemyType": "HUMAN",
+  "name": "Evelyn",
+  "health": 66,
+  "damage": 8
+}, {"windowsName": "CONTINUE_FIGHT"}]

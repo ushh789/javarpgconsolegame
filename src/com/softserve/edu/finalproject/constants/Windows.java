@@ -1,9 +1,20 @@
 package com.softserve.edu.finalproject.constants;
 
 public enum Windows {
-    MAIN, START, LOAD, CONTINUE, FIGHT, CONTINUE_FIGHT;
+    MAIN("MAIN"),
+    START("START"),
+    LOAD("LOAD"),
+    CONTINUE("CONTINUE"),
+    FIGHT("FIGHT"),
+    CONTINUE_FIGHT("CONTINUE_FIGHT");
 
-    Windows() {
+    private String windowsName;
 
+    Windows(String windowsName) {
+        this.windowsName = windowsName;
+    }
+
+    public String getWindowsName() {
+        return windowsName;
     }
 }

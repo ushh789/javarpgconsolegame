@@ -12,7 +12,4 @@ public enum Characters {
         this.characterType = characterType;
     }
 
-    public String getCharacterType() {
-        return characterType;
-    }
 }

@@ -9,10 +9,7 @@ public class Town extends Area{
         int chosenName = random.nextInt(10);
         this.setLocationName(townNames[chosenName]);
     }
-    @Override
-    public void explore(Character character) {
 
-    }
     @Override
     public String toString() {
         return "You are in the Town " + super.toString();

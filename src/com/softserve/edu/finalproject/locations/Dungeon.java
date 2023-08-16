@@ -9,10 +9,7 @@ public class Dungeon extends Area{
         int chosenName = random.nextInt(10);
         this.setLocationName(dungeonNames[chosenName]);
     }
-    @Override
-    public void explore(Character character) {
 
-    }
     @Override
     public String toString() {
         return "You are in the Dungeon " + super.toString();

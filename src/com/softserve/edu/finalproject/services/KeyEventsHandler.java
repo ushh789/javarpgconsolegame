@@ -5,6 +5,7 @@ import com.softserve.edu.finalproject.constants.*;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -54,19 +55,24 @@ public class KeyEventsHandler implements Runnable {
         } else if (currentWindow == Windows.LOAD) {
                 se = new SaveEvents();
                 File[] saves = se.loadOptions();
-                File chosenSave = saves[Integer.parseInt(key)];
 
-                if (Integer.parseInt(key) >= 0 && Integer.parseInt(key) < saves.length) {
-                    player = se.loadPlayer(chosenSave);
-                    characterPreviewWindow();
-                    enemy = se.loadEnemy(chosenSave);
-                    currentWindow = Windows.CONTINUE_FIGHT;
-                    GameWindows.startFightStageWindow();
-                } else {
-                    currentWindow = Windows.LOAD;
-                    GameWindows.loadWindow();
+                try {
+                    File chosenSave = saves[Integer.parseInt(key)];
+
+                    if (Integer.parseInt(key) >= 0 && Integer.parseInt(key) < saves.length) {
+                        player = se.loadPlayer(chosenSave);
+                        characterPreviewWindow();
+                        enemy = se.loadEnemy(chosenSave);
+                        currentWindow = Windows.CONTINUE_FIGHT;
+                        GameWindows.startFightStageWindow();
+                    } else {
+                        System.out.println("There aren't any save with that number!");
+                        currentWindow = Windows.LOAD;
+                        GameWindows.loadGame();
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("There aren't any save with that number!");
                 }
-
         } else if (currentWindow == Windows.START) {
             switch (key) {
                 case "1" -> player = new Mage(tempName, Characters.MAGE);

@@ -97,6 +97,10 @@ public class SaveEvents {
         return files;
     }
 
+    public void printSaves(File[] files) {
+
+    }
+
     public GameCharacter loadPlayer(File file) {
         try (FileReader reader = new FileReader(file)) {
             JsonParser parser = new JsonParser();

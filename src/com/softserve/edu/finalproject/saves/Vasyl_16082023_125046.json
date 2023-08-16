@@ -1,0 +1,14 @@
+[{
+  "characterType": "WARRIOR",
+  "name": "Vasyl",
+  "level": 5,
+  "damage": 36,
+  "health": 84,
+  "mana": 250,
+  "abilityAvailable": true
+},{
+  "enemyType": "ELF",
+  "name": "Thalindra",
+  "health": 85,
+  "damage": 20
+},"CONTINUE_FIGHT"]

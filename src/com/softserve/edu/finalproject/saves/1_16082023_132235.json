@@ -1,0 +1,14 @@
+[{
+  "characterType": "MAGE",
+  "name": "1",
+  "level": 0,
+  "damage": 13,
+  "health": 77,
+  "mana": 50,
+  "abilityAvailable": true
+},{
+  "enemyType": "ELF",
+  "name": "Sylvaris",
+  "health": -6,
+  "damage": 25
+},"CONTINUE"]

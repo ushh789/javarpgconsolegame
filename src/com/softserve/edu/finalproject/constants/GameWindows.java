@@ -5,6 +5,8 @@ import com.softserve.edu.finalproject.character.Characters;
 import com.softserve.edu.finalproject.services.FightEvents;
 import com.softserve.edu.finalproject.services.SaveEvents;
 
+import java.io.File;
+
 import static com.softserve.edu.finalproject.DungeonRunner.enemy;
 import static com.softserve.edu.finalproject.DungeonRunner.player;
 
@@ -17,15 +19,16 @@ public class GameWindows {
         System.out.println(GameConstants.BOLD + "Select an option:" + GameConstants.RESET);
         System.out.println("[1] New game");
         System.out.println("[2] Load game");
-        System.out.println("[3] Save and quit\n");
-        System.out.println(GameConstants.ITALIC + "Enter \"q\" in any moment to quit from game without saving progress." + GameConstants.RESET);
+//        System.out.println("[3] Save and quit\n");
+        System.out.println(GameConstants.ITALIC + "\nEnter \"q\" in any moment to quit from game without saving progress." + GameConstants.RESET);
     }
 
     public static void loadWindow() {
         System.out.println(GameConstants.TEXT_COLOR_CYAN + GameConstants.LOAD_TITLE + GameConstants.RESET);
         System.out.println(GameConstants.BOLD + "Select save:" + GameConstants.RESET);
         se = new SaveEvents();
-        se.loadOptions();
+        File[] saves = se.loadOptions();
+        se.printSaves(saves);
         System.out.println("[q] Quit\n");
     }
 

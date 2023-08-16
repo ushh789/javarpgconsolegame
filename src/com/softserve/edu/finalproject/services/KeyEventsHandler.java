@@ -5,7 +5,6 @@ import com.softserve.edu.finalproject.constants.*;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -46,33 +45,33 @@ public class KeyEventsHandler implements Runnable {
                     currentWindow = Windows.LOAD;
                     GameWindows.loadWindow();
                 }
-                case "3" -> {
-                    SaveEvents saveEvents = new SaveEvents();
-                    System.out.println(saveEvents.save(Optional.empty(), player, enemy, this));
-                    GameEvents.quit();
-                }
             }
         } else if (currentWindow == Windows.LOAD) {
-                se = new SaveEvents();
-                File[] saves = se.loadOptions();
-
-                try {
-                    File chosenSave = saves[Integer.parseInt(key)];
-
-                    if (Integer.parseInt(key) >= 0 && Integer.parseInt(key) < saves.length) {
-                        player = se.loadPlayer(chosenSave);
-                        characterPreviewWindow();
-                        enemy = se.loadEnemy(chosenSave);
+            se = new SaveEvents();
+            File[] saves = se.loadOptions();
+            try {
+                GameWindows.loadWindow();
+                File chosenSave = saves[Integer.parseInt(key)];
+                if (Integer.parseInt(key) >= 0 && Integer.parseInt(key) < saves.length) {
+                    player = se.loadPlayer(chosenSave);
+                    characterPreviewWindow();
+                    enemy = se.loadEnemy(chosenSave);
+                    if(enemy!=null) {
                         currentWindow = Windows.CONTINUE_FIGHT;
                         GameWindows.startFightStageWindow();
-                    } else {
-                        System.out.println("There aren't any save with that number!");
-                        currentWindow = Windows.LOAD;
-                        GameWindows.loadGame();
                     }
-                } catch (NumberFormatException e) {
-                    System.out.println("There aren't any save with that number!");
+                    else {
+                        GameWindows.continueWindow();
+                        currentWindow = Windows.CONTINUE;
+                    }
                 }
+            } catch (NumberFormatException e) {
+                System.err.println("There isn't any save with that number! Try again.");
+                currentWindow = Windows.LOAD;
+            } catch (ArrayIndexOutOfBoundsException e){
+                System.err.println("There isn't any save with that number! Try again.");
+                currentWindow = Windows.LOAD;
+            }
         } else if (currentWindow == Windows.START) {
             switch (key) {
                 case "1" -> player = new Mage(tempName, Characters.MAGE);
@@ -103,7 +102,7 @@ public class KeyEventsHandler implements Runnable {
                 }
                 case "2" -> {
                     SaveEvents saveEvents = new SaveEvents();
-                    System.out.println(saveEvents.save(Optional.empty(), player, enemy, this));
+                    saveEvents.save(Optional.empty(), player, enemy, this);
                     GameEvents.quit();
                 }
             }
@@ -136,7 +135,7 @@ public class KeyEventsHandler implements Runnable {
                 }
                 case "2" -> {
                     SaveEvents saveEvents = new SaveEvents();
-                    System.out.println(saveEvents.save(Optional.empty(), player, enemy, this));
+                    saveEvents.save(Optional.empty(), player, enemy, this);
                     GameEvents.quit();
                 }
             }
@@ -166,7 +165,7 @@ public class KeyEventsHandler implements Runnable {
                 }
                 case "4" -> {
                     SaveEvents saveEvents = new SaveEvents();
-                    System.out.println(saveEvents.save(Optional.empty(), player, enemy, this));
+                    saveEvents.save(Optional.empty(), player, enemy, this);
                     GameEvents.quit();
                 }
             }

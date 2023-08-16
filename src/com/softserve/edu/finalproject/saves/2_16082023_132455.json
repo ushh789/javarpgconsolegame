@@ -1,0 +1,14 @@
+[{
+  "characterType": "WARRIOR",
+  "name": "2",
+  "level": 0,
+  "damage": 16,
+  "health": 100,
+  "mana": 0,
+  "abilityAvailable": true
+},{
+  "enemyType": "SKELETON",
+  "name": "Rattleclaw",
+  "health": 60,
+  "damage": 5
+},"FIGHT"]

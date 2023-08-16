@@ -73,24 +73,7 @@ public class SaveEvents {
         File[] files = new File[0];
         if (directory.isDirectory()) {
             files = directory.listFiles();
-            if (files != null) {
-                Pattern p = Pattern.compile("([\\d\\w]+_[\\d]{2}[\\d]{2}[\\d]{4})");
-                for (int i = 0; i < files.length; i++) {
-                    File file = files[i];
-                    if (file.isFile()) {
-                        String fileInfo = file.getName();
-                        Matcher m = p.matcher(fileInfo);
-                        if (m.find()) {
-                            String modifiedDate = fileInfo.substring(m.start(), m.end());
-                            modifiedDate = modifiedDate.replaceAll("(\\d{2})(\\d{2})(\\d{4})", "$1.$2.$3");
-                            modifiedDate = modifiedDate.replace("_", " - ");
-                            System.out.println("[" + i + "] - " + modifiedDate);
-                        }
-                    }
-                }
-            } else {
-                System.out.println("No files found in the directory.");
-            }
+            if (files == null) System.out.println("No files found in the directory.");
         } else {
             System.out.println(path + " is not a directory.");
         }
@@ -98,7 +81,21 @@ public class SaveEvents {
     }
 
     public void printSaves(File[] files) {
-
+    String path = "src/com/softserve/edu/finalproject/saves/";
+        Pattern p = Pattern.compile("([\\d\\w]+_[\\d]{2}[\\d]{2}[\\d]{4})");
+        for (int i = 0; i < files.length; i++) {
+            File file = files[i];
+            if (file.isFile()) {
+                String fileInfo = file.getName();
+                Matcher m = p.matcher(fileInfo);
+                if (m.find()) {
+                    String modifiedDate = fileInfo.substring(m.start(), m.end());
+                    modifiedDate = modifiedDate.replaceAll("(\\d{2})(\\d{2})(\\d{4})", "$1.$2.$3");
+                    modifiedDate = modifiedDate.replace("_", " - ");
+                    System.out.println("[" + i + "] - " + modifiedDate);
+                }
+            }
+        }
     }
 
     public GameCharacter loadPlayer(File file) {
